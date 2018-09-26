@@ -4,7 +4,7 @@ import { Header, Title, Button, Left, Right, Body, Icon } from 'native-base';
 
 const HeaderCommon = () => {
     return (
-        <Header style={styles.container}>
+        <Header style={styles.container} androidStatusBarColor="black">
             <Left>
                 <Button transparent>
                     <Icon style={styles.textStyle} name='menu' />
