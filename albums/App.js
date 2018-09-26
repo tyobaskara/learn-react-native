@@ -18,7 +18,7 @@ export default class App extends Component {
       <Container>
         <HeaderCommon />
         <Content contentContainerStyle={styles.container}>
-          <View >
+          <View style={styles.textStyle}>
             <Text>Welcome to React Native!</Text>
             <Text>To get started, edit App.js</Text>
             <Text>{instructions}</Text>
@@ -36,6 +36,9 @@ const styles = StyleSheet.create({
       flexGrow: 1,
       alignItems: 'center',
       justifyContent: 'center'
+  },
+  textStyle: {
+    alignItems: 'center'
   }
 });
 

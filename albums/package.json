@@ -11,7 +11,8 @@
     "native-base": "^2.8.0",
     "react": "16.5.0",
     "react-native": "0.57.1",
-    "react-native-svg": "^7.0.3"
+    "react-native-svg": "^7.0.3",
+    "react-native-vector-icons": "^5.0.0"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
