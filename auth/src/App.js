@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Container } from 'native-base';
 import firebase from 'firebase';
 import { HeaderCommon } from './components/common';
@@ -19,7 +19,7 @@ export default class App extends Component {
   render() {
     return (
       <Container style={{ flex: 1 }}>
-        <HeaderCommon name="Auth"/>
+        <HeaderCommon name="Auth" />
         <LoginForm />
       </Container>
     );
