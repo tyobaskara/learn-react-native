@@ -30,8 +30,7 @@ const styles = StyleSheet.create({
     textContainer: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center',
-        width: null
+        justifyContent: 'center'
     },
     textStyle: {
         color: '#333'
