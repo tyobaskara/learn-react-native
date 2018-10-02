@@ -8,8 +8,8 @@ const CardSection = (props) => {
     <View style={containerStyle}>
       {props.children}
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   containerStyle: {
