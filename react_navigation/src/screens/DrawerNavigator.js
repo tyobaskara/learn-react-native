@@ -5,11 +5,11 @@ import {
 
 import { DrawerNavigator, StackNavigator } from 'react-navigation'
 
-import HomeScreenTabNavigator from './HomeScreenTabNavigator'
+import AppTabNavigator from './HomeScreenTabNavigator'
 
 const InnerStackNavigator = new StackNavigator({
     TabNavigator: {
-        screen: HomeScreenTabNavigator
+        screen: AppTabNavigator
     }
 })
 
