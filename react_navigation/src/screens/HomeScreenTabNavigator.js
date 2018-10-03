@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-import {
-    View,
-    Button,
-    StyleSheet
-} from "react-native";
+import { View } from "react-native";
 
 import { TabNavigator } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -49,13 +45,5 @@ const HomeScreenTabNavigator = new TabNavigator({
                 <Ionicons name="md-compass" size={24} />
             )
         }
-    }
-})
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
     }
 });
