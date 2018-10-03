@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, StyleSheet, Button } from 'react-native';
 
 class SignUpScreen extends Component {
 
@@ -10,7 +10,7 @@ class SignUpScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Button title="Log in" onPress={() => this.props.navigation.navigate('SignUpScreen')}></Button>
+                <Button title="Log in" onPress={() => this.props.navigation.navigate('LoginScreen')}></Button>
                 <Button title="Sign Up" onPress={() => this.props.navigation.navigate('SignUpScreen')}></Button>
             </View>
         )
