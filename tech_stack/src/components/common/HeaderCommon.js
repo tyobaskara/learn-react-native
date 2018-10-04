@@ -9,11 +9,11 @@ class HeaderCommon extends Component {
     
         return (
             <Header style={container} androidStatusBarColor="black">
-                <Left />
+                <Left style={{ flex: 1 }} />
                 <Body style={textContainer}>
                     <Title style={textStyle}>{name}</Title>
                 </Body>
-                <Right />
+                <Right style={{ flex: 1 }} />
             </Header>
         );
     }
