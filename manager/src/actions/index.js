@@ -1,6 +1,8 @@
-export const selectLibrary = (payload) => {
+import { EMAIL_CHANGED } from './types';
+
+export const emailChanged = (text) => {
     return {
-        type: 'test_actions',
-        payload: payload
-    }
-}
+        type: EMAIL_CHANGED,
+        payload: text
+    };
+};
