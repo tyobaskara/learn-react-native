@@ -14,3 +14,7 @@ learn react-native from scratch
 - redux
 - layout animation
 
+## manager
+- login form with navigation, firebase and redux
+- redux-thunk (allow to use dispatch)
+- firebase@5.0.3 (android support issue react child error)

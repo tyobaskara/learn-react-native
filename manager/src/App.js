@@ -3,7 +3,7 @@ import { Platform, StyleSheet, Text, View } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import firebase from '@firebase/app';
-import '@firebase/auth';
+import ReduxThunk from 'redux-thunk';
 import reducers from './reducers';
 import LoginForm from './components/LoginForm';
 
