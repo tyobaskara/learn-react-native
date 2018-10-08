@@ -1,16 +1,16 @@
 # learn-react-native
 learn react-native from scratch
 
-# albums
+## albums
 - Styling components in react-native
 
-# react_navigation
+## react_navigation
 - navigate page using react-navigation
 
-# auth
+## auth
 - firebase google login
 
-# tech_stack
+## tech_stack
 - redux
 - layout animation
 
