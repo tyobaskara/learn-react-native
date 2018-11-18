@@ -14,21 +14,18 @@ class LoginForm extends Component {
 
 	onButtonPress = () => {
 		const { email, password } = this.state;
-		const _this = this;
 
 		this.setState({ error: '', loading: true });
 
 		firebase
 			.auth()
 			.signInWithEmailAndPassword(email, password)
-			.then(() => {
-				_this.onLoginSuccess();
-			})
+			.then(this.onLoginSuccess)
 			.catch(() => {
 				firebase
 					.auth()
 					.createUserWithEmailAndPassword(email, password)
-					.catch(_this.onLoginFail);
+					.catch(this.onLoginFail);
 			});
 	};
 
@@ -78,9 +75,7 @@ class LoginForm extends Component {
 
 					<Text style={styles.errorTextStyle}>{this.state.error}</Text>
 
-					<CardSection>
-						{this.renderButton()}
-					</CardSection>
+					<CardSection>{this.renderButton()}</CardSection>
 				</Card>
 			</View>
 		);
@@ -94,8 +89,8 @@ const styles = StyleSheet.create({
 	errorTextStyle: {
 		fontSize: 15,
 		alignSelf: 'center',
-        color: 'red',
-        marginTop: 15
+		color: 'red',
+		marginTop: 15
 	}
 });
 
