@@ -22,12 +22,12 @@ const styles = StyleSheet.create({
 	},
 	buttonStyle: {
 		flex: 1,
-		alignSelf: 'stretch',
+        alignSelf: 'stretch',
 		backgroundColor: '#fff',
-		borderRadius: 5,
+		borderRadius: 2,
 		borderWidth: 1,
 		borderColor: '#007aff',
-		marginTop: 15,
+		marginTop: 25,
 		marginBottom: 15
 	}
 });

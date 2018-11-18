@@ -55,11 +55,7 @@ class LoginForm extends Component {
 
 	render() {
 		return (
-			<View style={{ padding: 15 }}>
-				<View style={styles.textContainer}>
-					<Text style={styles.textStyle}>Welcome to React Native!</Text>
-				</View>
-
+			<View style={{ padding: 10 }}>
 				<Card>
 					<CardSection>
 						<Input
@@ -82,7 +78,9 @@ class LoginForm extends Component {
 
 					<Text style={styles.errorTextStyle}>{this.state.error}</Text>
 
-					<CardSection>{this.renderButton()}</CardSection>
+					<View style={{ flexDirection: 'row' }} >
+						{this.renderButton()}
+					</View>
 				</Card>
 			</View>
 		);
@@ -90,19 +88,14 @@ class LoginForm extends Component {
 }
 
 const styles = StyleSheet.create({
-	textContainer: {
-		padding: 5,
-		alignSelf: 'center',
-		marginTop: 15,
-		marginBottom: 25
-	},
 	textStyle: {
 		fontSize: 15
 	},
 	errorTextStyle: {
 		fontSize: 15,
 		alignSelf: 'center',
-		color: 'red'
+        color: 'red',
+        marginTop: 15
 	}
 });
 
