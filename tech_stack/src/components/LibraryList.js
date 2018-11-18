@@ -24,8 +24,6 @@ class LibraryList extends Component {
 	}
 }
 
-const mapStateToProps = state => {
-	return { libraries: state.libraries };
-};
+const mapStateToProps = state => ({ libraries: state.libraries });
 
 export default connect(mapStateToProps)(LibraryList);
