@@ -1,6 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import { SafeAreaView } from 'react-native';
-import { Container } from 'native-base';
+import React, { Component } from 'react';
+import { SafeAreaView, View } from 'react-native';
 import firebase from 'firebase';
 import { HeaderCommon, Button, Spinner } from './components/common';
 import LoginForm from './components/LoginForm';
@@ -33,9 +32,9 @@ export default class App extends Component {
 		switch (this.state.loggedIn) {
 			case true:
 				return (
-					<Fragment style={{ flexDirection: 'row', padding: 15 }}>
+					<View style={{ flexDirection: 'row', padding: 15 }}>
 						<Button onPress={() => firebase.auth().signOut()}>Log Out</Button>
-					</Fragment>
+					</View>
 				);
 			case false:
 				return <LoginForm />;
