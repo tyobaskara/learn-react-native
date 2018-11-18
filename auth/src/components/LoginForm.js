@@ -78,9 +78,9 @@ class LoginForm extends Component {
 
 					<Text style={styles.errorTextStyle}>{this.state.error}</Text>
 
-					<View style={{ flexDirection: 'row' }} >
+					<CardSection>
 						{this.renderButton()}
-					</View>
+					</CardSection>
 				</Card>
 			</View>
 		);
