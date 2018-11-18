@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, TouchableOpacity, Linking } from 'react-native';
 import { Header, Title, Left, Right, Body } from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import firebase from 'firebase';
@@ -12,12 +12,20 @@ class HeaderCommon extends Component {
 		return (
 			<Header style={container} androidStatusBarColor='black'>
 				<Left>
-					<Icon
-						style={{ margin: 10 }}
-						name='git-square'
-						size={25}
-						color='#333'
-					/>
+					<TouchableOpacity
+						onPress={() =>
+							Linking.openURL(
+								'https://github.com/tyobaskara/learn-react-native'
+							)
+						}
+					>
+						<Icon
+							style={{ margin: 10 }}
+							name='git-square'
+							size={25}
+							color='#333'
+						/>
+					</TouchableOpacity>
 				</Left>
 				<Body>
 					<Title style={textStyle}>{name}</Title>
