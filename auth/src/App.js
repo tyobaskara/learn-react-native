@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { View } from 'react-native';
+import React, { Component, Fragment } from 'react';
+import { SafeAreaView } from 'react-native';
 import { Container } from 'native-base';
 import firebase from 'firebase';
 import { HeaderCommon, Button, Spinner } from './components/common';
@@ -33,9 +33,9 @@ export default class App extends Component {
 		switch (this.state.loggedIn) {
 			case true:
 				return (
-					<View style={{ flexDirection: 'row', padding: 15 }}>
+					<Fragment style={{ flexDirection: 'row', padding: 15 }}>
 						<Button onPress={() => firebase.auth().signOut()}>Log Out</Button>
-					</View>
+					</Fragment>
 				);
 			case false:
 				return <LoginForm />;
@@ -46,10 +46,10 @@ export default class App extends Component {
 
 	render() {
 		return (
-			<Container style={{ flex: 1 }}>
+			<SafeAreaView style={{ flex: 1 }}>
 				<HeaderCommon name='Auth' loggedIn={this.state.loggedIn} />
 				{this.renderContent()}
-			</Container>
+			</SafeAreaView>
 		);
 	}
 }

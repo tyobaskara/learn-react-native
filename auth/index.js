@@ -1,6 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { AppRegistry } from 'react-native';
 import App from './src/App';
-import {name as appName} from './app.json';
+import { name as appName } from './app.json';
 
 // symbol polyfills
 global.Symbol = require('core-js/es6/symbol');
