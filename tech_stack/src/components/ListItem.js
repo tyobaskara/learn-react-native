@@ -1,6 +1,6 @@
 /* eslint-disable react/sort-comp */
 /* eslint-disable no-unused-expressions */
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import {
 	Text,
 	StyleSheet,
@@ -14,7 +14,7 @@ import { connect } from 'react-redux';
 import { CardSection } from './common';
 import * as actions from '../actions';
 
-class ListItem extends Component {
+class ListItem extends PureComponent {
 	constructor() {
 		super();
 
