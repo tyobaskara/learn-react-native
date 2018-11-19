@@ -3,7 +3,7 @@ import { SafeAreaView } from 'react-native';
 import { Provider } from 'react-redux';
 import firebase from 'firebase';
 import { Store } from './config/store';
-import LoginForm from './components/LoginForm';
+import Router from './Router';
 
 class App extends Component {
 	componentWillMount() {
@@ -23,9 +23,7 @@ class App extends Component {
 	render() {
 		return (
 			<Provider store={Store}>
-				<SafeAreaView>
-					<LoginForm />
-				</SafeAreaView>
+        <Router />
 			</Provider>
 		);
 	}
