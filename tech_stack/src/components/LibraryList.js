@@ -6,12 +6,8 @@ import ListItem from './ListItem';
 import FlatListItem from './FlatListItem';
 
 class LibraryList extends Component {
-	componentDidMount() {
-    console.log('this.props');
-		console.log(this.props);
-	}
-
 	componentWillMount() {
+    // ListView
 		const ds = new ListView.DataSource({
 			rowHasChanged: (r1, r2) => r1 !== r2
 		});
@@ -19,25 +15,44 @@ class LibraryList extends Component {
 	}
 
 	renderRow(library) {
+    // ListView
 		return <ListItem library={library} />;
-  }
-  
-  renderFlatList(library) {
-    return <FlatListItem library={library} />;
-  }
+	}
+
+	renderFlatList(library) {
+    // FlatList
+		return <FlatListItem library={library} />;
+	}
 
 	render() {
 		return (
-			<View style={{ height: 400, marginTop: 20 }}>
-				<Text style={{ textAlign: 'center' }}>ListView (deprecated)</Text>
+			<View style={{ height: 450, marginTop: 25 }}>
+				<Text
+					style={{
+						textAlign: 'center',
+						backgroundColor: '#f5f5f5',
+            padding: 10
+					}}
+				>
+					ListView (Deprecated)
+				</Text>
 				<ListView dataSource={this.dataSource} renderRow={this.renderRow} />
 
-				<Text style={{ textAlign: 'center' }}>FlatList (recommended)</Text>
-        <FlatList 
-          data={this.props.libraries}
-          renderItem={this.renderFlatList}
-          keyExtractor={library => (library.id).toString()}
-        />
+				<Text
+					style={{
+						textAlign: 'center',
+						marginTop: 20,
+						backgroundColor: '#f5f5f5',
+            padding: 10
+					}}
+				>
+					FlatList (Recommended)
+				</Text>
+				<FlatList
+					data={this.props.libraries}
+					renderItem={this.renderFlatList}
+					keyExtractor={library => library.id.toString()}
+				/>
 			</View>
 		);
 	}
