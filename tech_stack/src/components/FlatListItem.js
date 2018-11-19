@@ -70,9 +70,6 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state, ownProps) => {
-	console.log('state.selectedLibraryId, ownProps.library.item.id');
-	console.log(state.selectedLibraryId, ownProps.library.item.id);
-
 	const expanded = state.selectedLibraryId === ownProps.library.item.id;
 
 	return { expanded };
