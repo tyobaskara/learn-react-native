@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state, ownProps) => {
 	const expanded = state.selectedLibraryId === ownProps.library.item.id;
 
-	return { expanded };
+	return { expanded }; // expanded : expanded
 };
 
 export default connect(
