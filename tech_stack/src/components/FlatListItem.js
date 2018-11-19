@@ -1,6 +1,6 @@
 /* eslint-disable react/sort-comp */
 /* eslint-disable no-unused-expressions */
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import {
 	Text,
 	StyleSheet,
@@ -14,7 +14,7 @@ import { connect } from 'react-redux';
 import { CardSection } from './common';
 import * as actions from '../actions';
 
-class ListItem extends Component {
+class FlatListItem extends PureComponent {
 	constructor() {
 		super();
 
@@ -35,7 +35,8 @@ class ListItem extends Component {
 			return (
 				<CardSection>
 					<Text style={{ flex: 1, paddingLeft: 15, paddingRight: 15 }}>
-						{library.description}
+						test
+						{library.item.description}
 					</Text>
 				</CardSection>
 			);
@@ -44,17 +45,19 @@ class ListItem extends Component {
 
 	render() {
 		const { titleStyle } = styles;
-		const { id, title } = this.props.library;
+		const { id, title } = this.props.library.item;
 
 		return (
-			<TouchableWithoutFeedback onPress={() => this.props.selectLibrary(id)}>
-				<View>
-					<CardSection>
-						<Text style={titleStyle}>{title}</Text>
-					</CardSection>
-					{this.renderDescription()}
-				</View>
-			</TouchableWithoutFeedback>
+			<View>
+				<TouchableWithoutFeedback onPress={() => this.props.selectLibrary(id)}>
+					<View>
+						<CardSection>
+							<Text style={titleStyle}>{title}</Text>
+						</CardSection>
+						{this.renderDescription()}
+					</View>
+				</TouchableWithoutFeedback>
+			</View>
 		);
 	}
 }
@@ -67,7 +70,10 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state, ownProps) => {
-	const expanded = state.selectedLibraryId === ownProps.library.id;
+	console.log('state.selectedLibraryId, ownProps.library.item.id');
+	console.log(state.selectedLibraryId, ownProps.library.item.id);
+
+	const expanded = state.selectedLibraryId === ownProps.library.item.id;
 
 	return { expanded };
 };
@@ -75,4 +81,4 @@ const mapStateToProps = (state, ownProps) => {
 export default connect(
 	mapStateToProps,
 	actions
-)(ListItem);
+)(FlatListItem);
