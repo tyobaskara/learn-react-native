@@ -17,12 +17,7 @@ export default (state = INITIAL_STATE, action) => {
 				[action.payload.prop]: action.payload.value
 			};
 		case EMPLOYEE_CREATE:
-			return {
-				...state,
-				name: action.payload.name,
-				phone: action.payload.phone,
-				shift: action.payload.shift
-			};
+			return INITIAL_STATE;
 		default:
 			return state;
 	}
