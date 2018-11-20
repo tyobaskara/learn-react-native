@@ -1,16 +1,22 @@
 import React, { Component } from 'react';
 import { Picker, StyleSheet, Text } from 'react-native';
 import { connect } from 'react-redux';
-import { employeeUpdate } from '../actions';
+import { employeeUpdate, employeeCreate } from '../actions';
 
 // components
 import { Card, CardSection, Input, Button } from './common';
 
 class EmployeeCreate extends Component {
-    componentWillReceiveProps(nextProps) {
-        console.log('employeeCreate nextProps');
-        console.log(nextProps);
+	componentWillReceiveProps(nextProps) {
+		console.log('employeeCreate nextProps');
+		console.log(nextProps);
     }
+
+	onButtonPress = () => {
+		const { name, phone, shift } = this.props;
+
+		this.props.employeeCreate({ name, phone, shift: shift || 'Monday' });
+	};
 
 	render() {
 		return (
@@ -56,7 +62,7 @@ class EmployeeCreate extends Component {
 				</CardSection>
 
 				<CardSection>
-					<Button>Create</Button>
+					<Button onPress={this.onButtonPress}>Create</Button>
 				</CardSection>
 			</Card>
 		);
@@ -77,5 +83,5 @@ const mapStateToProps = state => {
 
 export default connect(
 	mapStateToProps,
-	{ employeeUpdate }
+	{ employeeUpdate, employeeCreate }
 )(EmployeeCreate);
