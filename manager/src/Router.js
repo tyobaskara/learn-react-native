@@ -6,33 +6,48 @@ import EmployeeCreate from './components/EmployeeCreate';
 
 const RouterComponent = () => {
 	return (
-		<Router>
+		<Router
+			sceneStyle={style.sceneStyle}
+			navBarButtonColor={style.navBarButtonColor}
+			navigationBarStyle={style.navigationBarStyle}
+			titleStyle={style.titleStyle}
+			rightButtonTextStyle={style.titleStyle}
+		>
 			<Scene key='root' hideNavBar>
 				<Scene key='auth'>
-					<Scene
-						key='login'
-						component={LoginForm}
-						title='Please Login'
-					/>
+					<Scene key='login' component={LoginForm} title='Please Login' />
 				</Scene>
 				<Scene key='main'>
 					<Scene
-                        rightTitle='Add'
-                        onRight={() => Actions.employeeCreate()}
+						rightTitle='Add'
+						title='Employees'
+						onRight={() => Actions.employeeCreate()}
 						key='employeeList'
 						component={EmployeeList}
-						title='Employees'
-                        initial
+						initial
 					/>
-                    <Scene 
-                        title='Create Employee'
-                        key='employeeCreate'
-                        component={EmployeeCreate}
-                    />
+					<Scene
+						title='Create Employee'
+						key='employeeCreate'
+						component={EmployeeCreate}
+					/>
 				</Scene>
 			</Scene>
 		</Router>
 	);
+};
+
+const style = {
+	navigationBarStyle: {
+		backgroundColor: 'lightseagreen'
+	},
+	titleStyle: {
+		color: '#fff'
+	},
+	sceneStyle: {
+		backgroundColor: '#fff'
+	},
+	navBarButtonColor: '#fff'
 };
 
 export default RouterComponent;

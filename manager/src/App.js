@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { SafeAreaView } from 'react-native';
 import { Provider } from 'react-redux';
 import firebase from 'firebase';
 import { Store } from './config/store';
@@ -23,7 +22,7 @@ class App extends Component {
 	render() {
 		return (
 			<Provider store={Store}>
-        <Router />
+				<Router />
 			</Provider>
 		);
 	}
