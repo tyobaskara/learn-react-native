@@ -19,9 +19,6 @@ class EmployeeList extends Component {
 }
 
 const mapStateToProps = state => {
-	console.log('state');
-	console.log(state);
-	
 	const employees = _.map(state.employees, (val, uid) => {
 		return { ...val, uid };
 	});
