@@ -1,13 +1,16 @@
 /* eslint-disable react/sort-comp */
 import React, { Component } from 'react';
-import { FlatList, ListView, Text, View } from 'react-native';
+import { FlatList, ListView, Text, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import ListItem from './ListItem';
 import FlatListItem from './FlatListItem';
 
 class LibraryList extends Component {
 	componentWillMount() {
-    // ListView
+		console.log('this.props.libraries');
+		console.log(this.props.libraries);
+
+    	// ListView
 		const ds = new ListView.DataSource({
 			rowHasChanged: (r1, r2) => r1 !== r2
 		});
@@ -26,7 +29,7 @@ class LibraryList extends Component {
 
 	render() {
 		return (
-			<View style={{ height: 450, marginTop: 25 }}>
+			<ScrollView>
 				<Text
 					style={{
 						textAlign: 'center',
@@ -53,7 +56,7 @@ class LibraryList extends Component {
 					renderItem={this.renderFlatList}
 					keyExtractor={library => library.id.toString()}
 				/>
-			</View>
+			</ScrollView>
 		);
 	}
 }
