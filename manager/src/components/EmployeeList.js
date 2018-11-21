@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { View, FlatList } from 'react-native';
+import { View, Text, FlatList } from 'react-native';
 import _ from 'lodash';
 import { employeesFetch } from '../actions';
 
 // components
 import FlatListItem from './FlatListItem';
 
-class EmployeeList extends Component {
+class EmployeeList extends PureComponent {
 	componentWillMount() {
 		this.props.employeesFetch();
 	}
@@ -20,6 +20,7 @@ class EmployeeList extends Component {
 	}
 
 	renderFlatListItem(library) {
+		console.log('renderrrr');
 		return <FlatListItem library={library} />;
 	}
 
@@ -27,10 +28,9 @@ class EmployeeList extends Component {
 		return (
 			<View>
 				<FlatList
-					style={{ flex: 1 }}
-					data={this.props.employees[0]}
+					data={this.props.employees}
 					renderItem={this.renderFlatListItem}
-					keyExtractor={library => library.name}
+					keyExtractor={library => library.uid}
 				/>
 			</View>
 		);
@@ -38,7 +38,7 @@ class EmployeeList extends Component {
 }
 
 const mapStateToProps = state => {
-	const employees = _.map(state.employees, (val, uid) => {
+	const employees = _.map(state.employees.data, (val, uid) => {
 		return { ...val, uid };
 	});
 

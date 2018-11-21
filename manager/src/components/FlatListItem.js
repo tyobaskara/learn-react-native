@@ -1,13 +1,19 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { View, Text } from 'react-native';
 
-class FlatListItem extends Component {
-    renderDescription = () => {
-		const { library } = this.props;
+class FlatListItem extends PureComponent {
+	renderDescription = () => {
+		const { name, phone, shift } = this.props.library.item;
 
-        return <Text style={{ flex: 1, paddingLeft: 15, paddingRight: 15 }}>{library.name}</Text>;
-    };
-    
+		return (
+			<View>
+				<Text>{name}</Text>
+				<Text>{phone}</Text>
+				<Text>{shift}</Text>
+			</View>
+		);
+	};
+
 	render() {
 		return (
 			<View>
