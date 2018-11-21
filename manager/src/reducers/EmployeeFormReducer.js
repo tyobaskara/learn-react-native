@@ -1,15 +1,12 @@
 import { EMPLOYEE_UPDATE, EMPLOYEE_CREATE } from '../actions/types';
 
-const INITIAL_STATE = {
+const initialState = {
 	name: '',
 	phone: '',
 	shift: ''
 };
 
-export default (state = INITIAL_STATE, action) => {
-	console.log('employeeFormReducer actions');
-	console.log(action);
-
+export default (state = initialState, action) => {
 	switch (action.type) {
 		case EMPLOYEE_UPDATE:
 			return {
@@ -17,7 +14,7 @@ export default (state = INITIAL_STATE, action) => {
 				[action.payload.prop]: action.payload.value
 			};
 		case EMPLOYEE_CREATE:
-			return INITIAL_STATE;
+			return initialState;
 		default:
 			return state;
 	}

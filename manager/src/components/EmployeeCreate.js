@@ -7,11 +7,6 @@ import { employeeUpdate, employeeCreate } from '../actions';
 import { Card, CardSection, Input, Button } from './common';
 
 class EmployeeCreate extends Component {
-	componentWillReceiveProps(nextProps) {
-		console.log('employeeCreate nextProps');
-		console.log(nextProps);
-    }
-
 	onButtonPress = () => {
 		const { name, phone, shift } = this.props;
 

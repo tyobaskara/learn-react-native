@@ -37,11 +37,6 @@ class LoginForm extends Component {
 		return <Button onPress={this.onButtonPress}>Login</Button>;
 	};
 
-	componentWillReceiveProps(nextProps) {
-		console.log('nextProps');
-		console.log(nextProps);
-	}
-
 	render() {
 		return (
 			<Card>

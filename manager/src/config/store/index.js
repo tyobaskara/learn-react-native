@@ -1,7 +1,13 @@
-import { createStore, applyMiddleware } from 'redux';
+/* eslint-disable no-undef */
+/* eslint-disable no-underscore-dangle */
+import { createStore, applyMiddleware, compose } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import reducers from '../../reducers';
 
-export const Store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
-
-// https://github.com/jhen0409/react-native-debugger
+export const Store = createStore(
+    reducers,
+	compose(
+		applyMiddleware(ReduxThunk),
+		window.devToolsExtension ? window.devToolsExtension() : f => f
+	)
+);

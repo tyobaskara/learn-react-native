@@ -15,9 +15,6 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
-	console.log('AuthReducer actions');
-	console.log(action);
-
 	switch (action.type) {
 		case EMAIL_CHANGED:
 			return {
