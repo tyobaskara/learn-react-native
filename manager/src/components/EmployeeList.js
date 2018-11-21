@@ -41,7 +41,7 @@ const mapStateToProps = state => {
 	const employees = _.map(state.employees.data, (val, uid) => {
 		return { ...val, uid };
 	});
-
+	
 	return { employees };
 };
 
