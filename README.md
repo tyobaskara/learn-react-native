@@ -21,7 +21,12 @@ learn react-native from scratch
 
 ## manager
 
-- login form with navigation, firebase and redux
-- redux-thunk (Allow to use dispatch)
-- React native router flux (Routing pages)
-- firebase@5.0.3 (Android support issue react child error)
+- Login form using firebase
+- Redux
+- Firebase create, update, delete
+- Redux-thunk (Allow to use dispatch)
+- React native router flux (Routing pages for navigation)
+- React native picker
+- Modal react native
+- React Communication (Text(sms), Phone, Email)
+- Firebase@5.0.3 (Android support issue react child error)
