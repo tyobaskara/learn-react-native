@@ -5,6 +5,7 @@ import _ from 'lodash';
 import { employeesFetch } from '../actions';
 
 // components
+import { Spinner } from './common';
 import FlatListItem from './FlatListItem';
 
 class EmployeeList extends PureComponent {
@@ -14,7 +15,7 @@ class EmployeeList extends PureComponent {
 
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.employees.length) {
-			// log
+			// console
 		}
 	}
 
@@ -23,6 +24,12 @@ class EmployeeList extends PureComponent {
 	}
 
 	render() {
+		const { loading } = this.props;
+
+		if (loading) {
+			return <Spinner />;
+		}
+		
 		return (
 			<View>
 				<FlatList
@@ -36,11 +43,12 @@ class EmployeeList extends PureComponent {
 }
 
 const mapStateToProps = state => {
+	const { loading } = state.employees;
 	const employees = _.map(state.employees.data, (val, uid) => {
 		return { ...val, uid };
 	});
-	
-	return { employees };
+
+	return { employees, loading };
 };
 
 export default connect(
