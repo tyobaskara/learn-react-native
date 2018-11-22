@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { View, Text, FlatList } from 'react-native';
+import { View, FlatList } from 'react-native';
 import _ from 'lodash';
 import { employeesFetch } from '../actions';
 
@@ -14,14 +14,12 @@ class EmployeeList extends PureComponent {
 
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.employees.length) {
-			console.log('nextProps.employees');
-			console.log(nextProps.employees);
+			// log
 		}
 	}
 
-	renderFlatListItem(library) {
-		console.log('renderrrr');
-		return <FlatListItem library={library} />;
+	renderFlatListItem(employee) {
+		return <FlatListItem employee={employee} />;
 	}
 
 	render() {
@@ -30,7 +28,7 @@ class EmployeeList extends PureComponent {
 				<FlatList
 					data={this.props.employees}
 					renderItem={this.renderFlatListItem}
-					keyExtractor={library => library.uid}
+					keyExtractor={employee => employee.uid}
 				/>
 			</View>
 		);
