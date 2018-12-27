@@ -15,20 +15,10 @@ class ListItem extends PureComponent {
 		return (
 			<TouchableWithoutFeedback onPress={this.onPress}>
 				<View style={styles.container}>
-					<View style={{ flex: 1, flexDirection: 'row' }}>
-						<View
-							style={{
-								justifyContent: 'center',
-								overflow: 'hidden',
-								borderRadius: 50,
-								marginRight: 10
-							}}
-						>
+					<View style={styles.leftContent}>
+						<View style={styles.wrapperImage}>
 							<Image
-								style={{
-									height: 50,
-									width: 50
-								}}
+								style={styles.image}
 								source={{
 									uri: item.picture.thumbnail
 								}}
@@ -36,10 +26,7 @@ class ListItem extends PureComponent {
 							/>
 						</View>
 						<View
-							style={{
-								flex: 1,
-								justifyContent: 'center'
-							}}
+							style={styles.textWrapper}
 						>
 							<Text style={styles.text}>
 								{item.name.first} {item.name.last}
@@ -47,8 +34,8 @@ class ListItem extends PureComponent {
 							<Text style={styles.text}>{item.email}</Text>
 						</View>
 					</View>
-					<View style={{ justifyContent: 'center' }}>
-						<Icon name='ios-add' color='#fff' size={25} />
+					<View style={styles.iconWrapper}>
+						<Icon name='ios-arrow-forward' color='#fff' size={25} />
 					</View>
 				</View>
 			</TouchableWithoutFeedback>
