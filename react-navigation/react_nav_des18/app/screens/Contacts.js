@@ -1,12 +1,24 @@
-import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import React, { PureComponent } from 'react';
+import { View, Text, FlatList } from 'react-native';
 
-class Contacts extends Component {
+import { contacts } from '../config/data';
+import colors from '../config/colors';
+
+import ListItem from '../components/ListItem';
+
+class Contacts extends PureComponent {
+  _renderItem = ({ item }) => (
+    <ListItem item={item} />
+  );
+
   render() {
     return (
-      <View style={{flex: 1, alignItems:'center', justifyContent:'center'}}>
-        <Text>Contact Screen</Text>
-      </View>
+      <FlatList
+        style={{ backgroundColor: colors.backgroundColor }}
+        data={contacts}
+        renderItem={this._renderItem}
+        keyExtractor={(item) => item.email}
+      />
     )
   }
 }
