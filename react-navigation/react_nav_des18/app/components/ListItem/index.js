@@ -25,9 +25,7 @@ class ListItem extends PureComponent {
 								resizeMode='cover'
 							/>
 						</View>
-						<View
-							style={styles.textWrapper}
-						>
+						<View style={styles.textWrapper}>
 							<Text style={styles.text}>
 								{item.name.first} {item.name.last}
 							</Text>
