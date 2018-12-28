@@ -1,14 +1,10 @@
 import React from 'react';
 import { SafeAreaView } from 'react-native';
 
-import Contacts from './screens/Contacts';
+import ContactsStack from './config/router';
 
 const App = () => {
-	return (
-		<SafeAreaView>
-			<Contacts />
-		</SafeAreaView>
-	);
+	return <ContactsStack />;
 };
 
 export default App;
