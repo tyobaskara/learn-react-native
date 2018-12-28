@@ -16,8 +16,10 @@ const ContactsStack = createStackNavigator(
 		Details: {
 			screen: Details,
 			navigationOptions: ({ navigation }) => ({
-        title: `${capitalizeFirstLetter(navigation.state.params.name.first)}`
-      })
+				title: `${capitalizeFirstLetter(
+					navigation.state.params.name.first
+				)} ${capitalizeFirstLetter(navigation.state.params.name.last)}`
+			})
 		}
 	},
 	{
