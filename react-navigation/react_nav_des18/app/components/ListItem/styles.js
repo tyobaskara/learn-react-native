@@ -1,23 +1,24 @@
 import { StyleSheet } from 'react-native';
+import colors from '../../config/colors';
 
+export const CHEVRON_SIZE = 25;
 export default StyleSheet.create({
 	row: {
 		flex: 1,
 		flexDirection: 'row',
 		justifyContent: 'space-between',
-		backgroundColor: 'lightseagreen',
+		backgroundColor: colors.rowUnderlay,
 		marginBottom: 5,
 		padding: 15
 	},
-	text: {
-		color: '#fff',
-		fontSize: 15
+	email: {
+		color: colors.subtleText
 	},
 	textTop: {
-		color: '#fff',
+		color: colors.primaryText,
 		marginBottom: 2,
-		fontSize: 15,
-		fontWeight: 'bold',
+		fontWeight: '500',
+		fontSize: 16,
 	},
 	wrapperImage: {
 		justifyContent: 'center',
@@ -25,8 +26,9 @@ export default StyleSheet.create({
 		borderRadius: 50
 	},
 	image: {
-		height: 50,
-		width: 50
+		height: 40,
+		width: 40,
+		borderRadius: 20
 	},
 	textWrapper: {
 		flex: 1,

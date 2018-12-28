@@ -15,29 +15,28 @@ class ListItem extends PureComponent {
 		const { item } = this.props;
 		const name = `${capitalizeFirstLetter(
 			item.name.first
-		)} ${capitalizeFirstLetter(item.name.last)}`;
+    )} ${capitalizeFirstLetter(item.name.last)}`;
+    const iconName = Platform.OS === 'ios' ? 'ios-arrow-forward' : 'md-arrow-forward';
 
 		return (
-			<TouchableHighlight onPress={this.onPress}>
+			<TouchableHighlight onPress={this.onPress} underlayColor={colors.rowUnderlay}>
 				<View style={styles.row}>
-					<View style={styles.wrapperImage}>
-						<Image
-							style={styles.image}
-							source={{
-								uri: item.picture.thumbnail
-							}}
-							resizeMode='cover'
-						/>
-					</View>
+          <Image
+            style={styles.image}
+            source={{
+              uri: item.picture.thumbnail
+            }}
+            resizeMode='cover'
+          />
 					<View style={styles.textWrapper}>
 						<Text style={styles.textTop}>{name}</Text>
-						<Text style={styles.text}>{item.email}</Text>
+						<Text style={styles.email}>{item.email}</Text>
 					</View>
 					<Icon
 						style={{ alignSelf: 'center' }}
-						name='ios-arrow-forward'
-						color='#fff'
-						size={25}
+						name={iconName}
+						color={colors.subtleText}
+						size={CHEVRON_SIZE}
 					/>
 				</View>
 			</TouchableHighlight>
