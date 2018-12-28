@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import React, { PureComponent } from 'react';
+import { ScrollView } from 'react-native';
 
 import { Actions, Header, Info } from '../components/UserDetails';
 import colors from '../config/colors';
 
-class Details extends Component {
+class Details extends PureComponent {
 	render() {
 		const contact = this.props.navigation.state.params;
 		return (

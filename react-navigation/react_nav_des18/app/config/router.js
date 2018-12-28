@@ -9,31 +9,44 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Contacts from '../screens/Contacts';
 import Details from '../screens/Details';
 import NewContact from '../screens/NewContact';
-import Me from '../screens/Me';
+import Personal from '../screens/Personal';
 
 import { capitalizeFirstLetter } from '../helpers/string';
 
-const ContactsStack = createStackNavigator(
-	{
-		Contacts: {
-			screen: Contacts,
-			navigationOptions: {
-				title: 'Contacts'
-			}
-		},
-		Details: {
-			screen: Details,
-			navigationOptions: ({ navigation }) => ({
-				title: `${capitalizeFirstLetter(
-					navigation.state.params.name.first
-				)} ${capitalizeFirstLetter(navigation.state.params.name.last)}`
-			})
+const ContactsStack = createStackNavigator({
+	Contacts: {
+		screen: Contacts,
+		navigationOptions: {
+			headerTitle: 'Contacts'
 		}
 	},
-	{
-		initialRouteName: 'Contacts'
+	Details: {
+		screen: Details,
+		navigationOptions: ({ navigation }) => ({
+			headerTitle: `${capitalizeFirstLetter(
+				navigation.state.params.naPersonal.first
+			)} ${capitalizeFirstLetter(navigation.state.params.naPersonal.last)}`
+		})
 	}
-);
+});
+
+const NewContactStack = createStackNavigator({
+	NewContact: {
+		screen: NewContact,
+		navigationOptions: {
+			headerTitle: 'New Contact'
+		}
+	}
+});
+
+const PersonalStack = createStackNavigator({
+	PersonalStack: {
+		screen: Personal,
+		navigationOptions: {
+			headerTitle: 'Personal'
+		}
+	}
+});
 
 const Tabs = createBottomTabNavigator({
 	Contacts: {
@@ -46,7 +59,7 @@ const Tabs = createBottomTabNavigator({
 		}
 	},
 	NewContact: {
-		screen: NewContact,
+		screen: NewContactStack,
 		navigationOptions: {
 			tabBarLabel: 'New Contact',
 			tabBarIcon: ({ tintColor }) => (
@@ -54,10 +67,10 @@ const Tabs = createBottomTabNavigator({
 			)
 		}
 	},
-	Me: {
-		screen: Me,
+	Personal: {
+		screen: PersonalStack,
 		navigationOptions: {
-			tabBarLabel: 'Me',
+			tabBarLabel: 'Personal',
 			tabBarIcon: ({ tintColor }) => (
 				<Icon name='ios-contact' size={25} color={tintColor} />
 			)
