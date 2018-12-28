@@ -1,9 +1,10 @@
 import React from 'react';
 
-import ContactsStack from './config/router';
+// import ContactsStack from './config/router';
+import Tabs from './config/router';
 
 const App = () => {
-	return <ContactsStack />;
+	return <Tabs />;
 };
 
 export default App;
