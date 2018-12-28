@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-	container: {
+	row: {
 		flex: 1,
 		flexDirection: 'row',
 		justifyContent: 'space-between',
@@ -9,14 +9,13 @@ export default StyleSheet.create({
 		marginBottom: 5,
 		padding: 15
 	},
-	leftContent: { flex: 1, flexDirection: 'row' },
 	text: {
 		color: '#fff',
 		fontSize: 15
 	},
 	textTop: {
 		color: '#fff',
-		marginBottom: 4,
+		marginBottom: 2,
 		fontSize: 15,
 		fontWeight: 'bold',
 	},
@@ -33,6 +32,5 @@ export default StyleSheet.create({
 		flex: 1,
 		justifyContent: 'center',
 		paddingHorizontal: 10
-	},
-	iconWrapper: { justifyContent: 'center' }
+	}
 });

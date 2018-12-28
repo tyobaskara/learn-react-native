@@ -5,7 +5,7 @@ import _ from 'lodash';
 import { contacts } from '../config/data';
 import colors from '../config/colors';
 
-import ListItem from '../components/ListItem';
+import { ListItem } from '../components/ListItem';
 
 class Contacts extends PureComponent {
 	state = {
