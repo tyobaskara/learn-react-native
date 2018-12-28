@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { View, Text, TouchableWithoutFeedback, Image } from 'react-native';
+import { View, Text, TouchableWithoutFeedback, Image, Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import styles from './styles';
@@ -26,7 +26,7 @@ class ListItem extends PureComponent {
 							/>
 						</View>
 						<View style={styles.textWrapper}>
-							<Text style={styles.text}>
+							<Text style={styles.textTop}>
 								{item.name.first} {item.name.last}
 							</Text>
 							<Text style={styles.text}>{item.email}</Text>

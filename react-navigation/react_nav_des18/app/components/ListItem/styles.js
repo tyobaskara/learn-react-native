@@ -12,8 +12,13 @@ export default StyleSheet.create({
 	leftContent: { flex: 1, flexDirection: 'row' },
 	text: {
 		color: '#fff',
-		marginBottom: 4,
 		fontSize: 15
+	},
+	textTop: {
+		color: '#fff',
+		marginBottom: 4,
+		fontSize: 15,
+		fontWeight: 'bold',
 	},
 	wrapperImage: {
 		justifyContent: 'center',
