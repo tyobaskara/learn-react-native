@@ -7,8 +7,8 @@ import { capitalizeFirstLetter } from '../../helpers/string';
 import colors from '../../config/colors';
 
 class ListItem extends PureComponent {
-	onPress = args => {
-		console.log(args);
+	onPress = () => {
+		this.props.navigate('Details');
 	};
 
 	render() {

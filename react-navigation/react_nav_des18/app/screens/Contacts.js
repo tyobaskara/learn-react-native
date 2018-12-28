@@ -20,7 +20,10 @@ class Contacts extends PureComponent {
 		}
 	};
 
-	_renderItem = ({ item }) => <ListItem item={item} />;
+	_renderItem = ({ item }) => {
+		const { navigate } = this.props.navigation;
+		return <ListItem item={item} navigate={navigate} />;
+	};
 
 	render() {
 		return (
