@@ -1,3 +1,5 @@
+CONTACT STACK REACT-NAVIGATION DECEMBER 2018
+
 =Mandatory=
 "react": "16.6.3",
 "react-native": "0.57.8",

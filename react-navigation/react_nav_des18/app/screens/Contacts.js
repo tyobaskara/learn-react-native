@@ -21,8 +21,8 @@ class Contacts extends PureComponent {
 	};
 
 	_renderItem = ({ item }) => {
-		const { navigate } = this.props.navigation;
-		return <ListItem item={item} navigate={navigate} />;
+		const { navigation } = this.props;
+		return <ListItem item={item} navigation={navigation} />;
 	};
 
 	render() {

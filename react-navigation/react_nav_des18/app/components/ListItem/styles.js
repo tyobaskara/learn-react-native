@@ -7,8 +7,6 @@ export default StyleSheet.create({
 		flex: 1,
 		flexDirection: 'row',
 		justifyContent: 'space-between',
-		backgroundColor: colors.rowUnderlay,
-		marginBottom: 5,
 		padding: 15
 	},
 	email: {

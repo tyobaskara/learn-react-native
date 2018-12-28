@@ -8,7 +8,8 @@ import colors from '../../config/colors';
 
 class ListItem extends PureComponent {
 	onPress = () => {
-		this.props.navigate('Details');
+		const { item } = this.props;
+		this.props.navigation.navigate('Details', item);
 	};
 
 	render() {
