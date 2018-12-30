@@ -5,9 +5,10 @@ import {
 	createBottomTabNavigator,
 	createDrawerNavigator
 } from 'react-navigation';
-import { Platform, TouchableOpacity } from 'react-native';
+import { Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
+import { DrawerButton } from '../components/Header';
 import Contacts from '../screens/Contacts';
 import Details from '../screens/Details';
 import NewContact from '../screens/NewContact';
@@ -15,13 +16,9 @@ import Personal from '../screens/Personal';
 
 import { capitalizeFirstLetter } from '../helpers/string';
 
-const iconMenu = Platform.OS === 'ios' ? 'ios-menu' : 'md-menu';
-
 const renderHeaderLeft = navigation => {
 	return Platform.OS === 'ios' ? (
-		<TouchableOpacity onPress={() => navigation.openDrawer()}>
-			<Icon name={iconMenu} size={25} style={{ marginLeft: 15 }} />
-		</TouchableOpacity>
+		<DrawerButton navigation={navigation} />
 	) : null;
 };
 
