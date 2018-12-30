@@ -17,16 +17,20 @@ import { capitalizeFirstLetter } from '../helpers/string';
 
 const iconMenu = Platform.OS === 'ios' ? 'ios-menu' : 'md-menu';
 
+const renderHeaderLeft = navigation => {
+	return Platform.OS === 'ios' ? (
+		<TouchableOpacity onPress={() => navigation.openDrawer()}>
+			<Icon name={iconMenu} size={25} style={{ marginLeft: 15 }} />
+		</TouchableOpacity>
+	) : null;
+};
+
 const ContactsStack = createStackNavigator({
 	Contacts: {
 		screen: Contacts,
 		navigationOptions: ({ navigation }) => ({
 			headerTitle: 'Contacts',
-			headerLeft: (
-				<TouchableOpacity onPress={() => navigation.openDrawer()}>
-					<Icon name={iconMenu} size={25} style={{ marginLeft: 15 }} />
-				</TouchableOpacity>
-			)
+			headerLeft: renderHeaderLeft(navigation)
 		})
 	},
 	Details: {
@@ -41,17 +45,12 @@ const ContactsStack = createStackNavigator({
 
 // export default createAppContainer(ContactsStack);
 
-
 const NewContactStack = createStackNavigator({
 	NewContact: {
 		screen: NewContact,
 		navigationOptions: ({ navigation }) => ({
 			headerTitle: 'New Contact',
-			headerLeft: (
-				<TouchableOpacity onPress={() => navigation.openDrawer()}>
-					<Icon name={iconMenu} size={25} style={{ marginLeft: 15 }} />
-				</TouchableOpacity>
-			)
+			headerLeft: renderHeaderLeft(navigation)
 		})
 	}
 });
@@ -61,11 +60,7 @@ const PersonalStack = createStackNavigator({
 		screen: Personal,
 		navigationOptions: ({ navigation }) => ({
 			headerTitle: 'Personal',
-			headerLeft: (
-				<TouchableOpacity onPress={() => navigation.openDrawer()}>
-					<Icon name={iconMenu} size={25} style={{ marginLeft: 15 }} />
-				</TouchableOpacity>
-			)
+			headerLeft: renderHeaderLeft(navigation)
 		})
 	}
 });
@@ -103,36 +98,28 @@ const Tabs = createBottomTabNavigator({
 
 //export default createAppContainer(Tabs);
 
-
 // DRAWER NAVIGATOR
 const Drawer = createDrawerNavigator({
 	Contacts: {
 		screen: ContactsStack,
 		navigationOptions: {
-			tabBarLabel: 'Contacts',
-			tabBarIcon: ({ tintColor }) => (
-				<Icon name='ios-list' size={25} color={tintColor} />
-			)
+			drawerLabel: 'Contacts'
 		}
 	},
 	NewContact: {
 		screen: NewContactStack,
 		navigationOptions: {
-			tabBarLabel: 'New Contact',
-			tabBarIcon: ({ tintColor }) => (
-				<Icon name='ios-add' size={25} color={tintColor} />
-			)
+			drawerLabel: 'New Contact'
 		}
 	},
 	Personal: {
 		screen: PersonalStack,
 		navigationOptions: {
-			tabBarLabel: 'Personal',
-			tabBarIcon: ({ tintColor }) => (
-				<Icon name='ios-contact' size={25} color={tintColor} />
-			)
+			drawerLabel: 'Personal'
 		}
 	}
 });
 
-export default createAppContainer(Drawer);
+const screens = Platform.OS === 'ios' ? Drawer : Tabs;
+
+export default createAppContainer(screens);
