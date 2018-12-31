@@ -1,4 +1,4 @@
-export const me = {
+export const personal = {
 	gender: 'male',
 	name: {
 		title: 'mr',

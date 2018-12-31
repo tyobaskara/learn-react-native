@@ -1,10 +1,20 @@
 import React, { PureComponent } from 'react';
-import { View, Text } from 'react-native';
+import { ScrollView } from 'react-native';
 
-const Personal = () => (
-	<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-		<Text>Me Screen</Text>
-	</View>
-);
+import { personal } from '../config/data';
+import { Actions, Header, Info } from '../components/UserDetails';
+import colors from '../config/colors';
+
+class Personal extends PureComponent {
+	render() {
+		return (
+			<ScrollView style={{ backgroundColor: colors.background }}>
+				<Header {...personal} />
+				<Actions {...personal} />
+				<Info {...personal} />
+			</ScrollView>
+		);
+	}
+}
 
 export default Personal;
