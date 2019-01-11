@@ -7,6 +7,7 @@ export default EStyleSheet.create({
 		justifyContent: 'center'
 	},
 	logo: {
+		marginTop: -150,
 		marginBottom: 20
 	},
 	backgroundContainer: {
