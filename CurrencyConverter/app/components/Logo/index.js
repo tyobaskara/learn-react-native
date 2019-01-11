@@ -1,7 +1,7 @@
-import Container from './Container'
+import Logo from './Logo'
 import Styles from './styles'
 
 export {
-  Container,
+  Logo,
   Styles
 }
