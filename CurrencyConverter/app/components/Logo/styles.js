@@ -1,9 +1,11 @@
 import { Dimensions } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 
-const imageWidth = Dimensions.get('window').width;
+const imageWidth = Dimensions.get('window').width / 3;
 
 export default EStyleSheet.create({
+	$largeImageSize: imageWidth,
+	$smallImageSize: imageWidth / 2,
 	logo: {
 		marginBottom: 20
 	},
@@ -19,15 +21,16 @@ export default EStyleSheet.create({
 		width: null
 	},
 	imageOverlay: {
-		margin: imageWidth / 7,
-		width: imageWidth / 3,
-		height: imageWidth / 3,
+		margin: '$largeImageSize / 3',
+		width: '$largeImageSize',
+		height: '$largeImageSize',
 		alignSelf: 'center',
 	},
 	label: {
 		color: '$white',
 		fontSize: 25,
 		fontWeight: '500',
-		textAlign: 'center'
+		textAlign: 'center',
+		letterSpacing: -0.5
 	}
 });
