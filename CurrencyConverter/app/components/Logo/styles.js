@@ -5,7 +5,6 @@ const imageWidth = Dimensions.get('window').width;
 
 export default EStyleSheet.create({
 	logo: {
-		marginTop: -150,
 		marginBottom: 20
 	},
 	backgroundContainer: {
