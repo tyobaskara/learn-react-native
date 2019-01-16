@@ -3,7 +3,6 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 
 const INPUT_HEIGHT = 48;
 const BORDER_RADIUS = 4;
-const imageWidth = Dimensions.get('window').width;
 
 export default EStyleSheet.create({
   $buttonBackgroundColorBase: '$white',
