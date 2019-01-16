@@ -1,4 +1,7 @@
+import { Dimensions } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
+
+const imageWidth = Dimensions.get('window').width;
 
 export default EStyleSheet.create({
 	container: {
@@ -22,8 +25,9 @@ export default EStyleSheet.create({
 		width: null
 	},
 	imageOverlay: {
-		margin: 50,
-		width: 100
+		margin: imageWidth / 7,
+		width: imageWidth / 3,
+		height: imageWidth / 3,
 	},
 	label: {
 		color: '#fff',
