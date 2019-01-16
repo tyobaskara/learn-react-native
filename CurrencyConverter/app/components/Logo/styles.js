@@ -4,11 +4,6 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 const imageWidth = Dimensions.get('window').width;
 
 export default EStyleSheet.create({
-	container: {
-		flex: 1,
-		alignItems: 'center',
-		justifyContent: 'center'
-	},
 	logo: {
 		marginTop: -150,
 		marginBottom: 20
