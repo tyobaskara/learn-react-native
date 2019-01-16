@@ -30,7 +30,7 @@ export default EStyleSheet.create({
 		height: imageWidth / 3,
 	},
 	label: {
-		color: '#fff',
+		color: '$white',
 		fontSize: 25,
 		fontWeight: '500'
 	}
