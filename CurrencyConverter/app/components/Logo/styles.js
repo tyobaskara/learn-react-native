@@ -12,7 +12,7 @@ export default EStyleSheet.create({
 		left: 0,
 		right: 0,
 		top: 0,
-		bottom: 0
+		bottom: 0,
 	},
 	bgImage: {
 		flex: 1,
@@ -22,10 +22,12 @@ export default EStyleSheet.create({
 		margin: imageWidth / 7,
 		width: imageWidth / 3,
 		height: imageWidth / 3,
+		alignSelf: 'center',
 	},
 	label: {
 		color: '$white',
 		fontSize: 25,
-		fontWeight: '500'
+		fontWeight: '500',
+		textAlign: 'center'
 	}
 });

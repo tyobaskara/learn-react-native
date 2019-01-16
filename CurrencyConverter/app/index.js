@@ -10,7 +10,7 @@ EStyleSheet.build({
   $inputText: '#797979',
   $lightGray: '#f0f0f0',
   
-  //$outline: 1 // uncomment to debugging styles
+  $outline: 1 // uncomment to debugging styles
 });
 
 const App = () => <Home />;
