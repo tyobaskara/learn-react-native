@@ -7,7 +7,7 @@ export default EStyleSheet.create({
 		right: 0,
     top: 0,
     '@media ios': {
-      paddingTop: 20
+      paddingTop: 10
     },
     '@media android': {
       paddingTop: StatusBar.currentHeight,
