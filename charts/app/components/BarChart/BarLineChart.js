@@ -1,10 +1,13 @@
 import React, { PureComponent } from 'react';
+import { Dimensions } from 'react-native';
 import { Svg, G, Rect, Line } from 'svgs';
+
+const { width } = Dimensions.get('window');
 
 export default class BarLine extends PureComponent {
   render() {
     const SVGHeight = 150;
-    const SVGWidth = null;
+    const SVGWidth = width - 75;
     const barWidth = 15;
     const graphHeight = 150;
 
@@ -12,8 +15,17 @@ export default class BarLine extends PureComponent {
       <Svg
         width={SVGWidth}
         height={SVGHeight}
-        style={{ backgroundColor: '#323232' }}
+        style={{ backgroundColor: '#fff' }}
       >
+        {/* Draw Axis X Line */}
+        <Line
+          x1='0'
+          y1='150'
+          x2={width}
+          y2='150'
+          style={{ stroke: '#f3f3f3', strokeWidth: 4 }}
+        />
+
         {/* translate for 'graphHeight' on y axis */}
         <G y={graphHeight}>
           <Rect
@@ -21,14 +33,14 @@ export default class BarLine extends PureComponent {
             y='-100'
             width={barWidth}
             height={graphHeight}
-            fill='tomato'
+            fill='#8fbc5a'
           />
           <Rect
             x='35'
             y='-70'
             width={barWidth}
             height={graphHeight}
-            fill='tomato'
+            fill='#fc9d13'
           />
         </G>
         <G y={graphHeight}>
@@ -37,14 +49,14 @@ export default class BarLine extends PureComponent {
             y='-120'
             width={barWidth}
             height={graphHeight}
-            fill='tomato'
+            fill='#8fbc5a'
           />
           <Rect
             x='80'
             y='-40'
             width={barWidth}
             height={graphHeight}
-            fill='tomato'
+            fill='#fc9d13'
           />
         </G>
 
@@ -54,7 +66,7 @@ export default class BarLine extends PureComponent {
           y1='100'
           x2='80'
           y2='80'
-          style={{ stroke: '#fff', strokeWidth: 4 }}
+          style={{ stroke: '#00a4de', strokeWidth: 4 }}
         />
       </Svg>
     );
