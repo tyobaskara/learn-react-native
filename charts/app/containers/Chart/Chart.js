@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { View, Text } from 'react-native';
 
-import { BarLine, BarChart } from '../../components/BarChart';
+import { AxisGeneration, BarGeneration, BarLine, BarChart } from '../../components/BarChart';
 
 import styles from './styles';
 
@@ -30,12 +30,26 @@ export default class Chart extends PureComponent {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <View style={{padding: 25, backgroundColor: 'white'}}>
+        
+        <View style={styles.section}>
           <Text style={styles.welcome}>BarLine</Text>
           <BarLine />
         </View>
-        <Text style={styles.welcome}>BarChart</Text>
-        <BarChart data={data} round={100} unit='€' />
+
+        <View style={styles.section}>
+          <Text style={styles.welcome}>Axis Generation</Text>
+          <AxisGeneration />
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.welcome}>Bar Generation</Text>
+          <BarGeneration data={data} />
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.welcome}>BarChart</Text>
+          <BarChart data={data} round={100} unit='€' />
+        </View>
       </View>
     );
   }

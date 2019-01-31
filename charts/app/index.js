@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, SafeAreaView, ScrollView } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 
 import { Chart } from './containers/Chart';
@@ -26,9 +26,11 @@ const styles = EStyleSheet.create({
 export default class App extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Chart />
-      </View>
+      <SafeAreaView style={styles.container}>
+        <ScrollView>
+          <Chart />
+        </ScrollView>
+      </SafeAreaView>
     );
   }
 }

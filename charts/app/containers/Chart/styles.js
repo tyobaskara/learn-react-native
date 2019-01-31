@@ -8,5 +8,10 @@ export default EStyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10
+  },
+  section: {
+    padding: 25,
+    backgroundColor: 'white',
+    marginBottom: 10
   }
 });
