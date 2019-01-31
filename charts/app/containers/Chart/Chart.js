@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { View, Text } from 'react-native';
 
-import { Bar, BarChart } from '../../components/BarChart';
+import { BarLine, BarChart } from '../../components/BarChart';
 
 import styles from './styles';
 
@@ -25,7 +25,7 @@ export default class Chart extends PureComponent {
       <View style={styles.container}>
         <Text style={styles.welcome}>Welcome to React Native!</Text>
         <Text style={styles.welcome}>Bar 1</Text>
-        <Bar/>
+        <BarLine />
         <Text style={styles.welcome}>Bar 2</Text>
         <BarChart data={data} round={100} unit="€"/>
       </View>

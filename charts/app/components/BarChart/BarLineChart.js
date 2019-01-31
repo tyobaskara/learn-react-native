@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Svg, G, Rect, Line } from 'svgs';
 
-export default class Bar extends PureComponent {
+export default class BarLine extends PureComponent {
   render() {
     const SVGHeight = 150;
     const SVGWidth = null;
