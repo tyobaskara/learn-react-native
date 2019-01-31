@@ -31,10 +31,10 @@ export default class Chart extends PureComponent {
       <View style={styles.container}>
         <Text style={styles.welcome}>Welcome to React Native!</Text>
         <View style={{padding: 25, backgroundColor: 'white'}}>
-          <Text style={styles.welcome}>Bar 1</Text>
+          <Text style={styles.welcome}>BarLine</Text>
           <BarLine />
         </View>
-        <Text style={styles.welcome}>Bar 2</Text>
+        <Text style={styles.welcome}>BarChart</Text>
         <BarChart data={data} round={100} unit='€' />
       </View>
     );

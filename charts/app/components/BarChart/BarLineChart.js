@@ -26,8 +26,8 @@ export default class BarLine extends PureComponent {
           style={{ stroke: '#f3f3f3', strokeWidth: 4 }}
         />
 
-        {/* translate for 'graphHeight' on y axis */}
         <G y={graphHeight}>
+          {/* Draw Bar */}
           <Rect
             x='15'
             y='-100'
@@ -42,8 +42,8 @@ export default class BarLine extends PureComponent {
             height={graphHeight}
             fill='#fc9d13'
           />
-        </G>
-        <G y={graphHeight}>
+
+          {/* Draw Bar */}
           <Rect
             x='60'
             y='-120'
@@ -59,7 +59,7 @@ export default class BarLine extends PureComponent {
             fill='#fc9d13'
           />
         </G>
-
+        
         {/* Draw Line */}
         <Line
           x1='30'
