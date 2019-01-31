@@ -1,14 +1,17 @@
 import React, { PureComponent } from 'react';
+import { Dimensions } from 'react-native';
 import { Svg, G, Line, Rect, Text } from 'svgs';
 import * as d3 from 'd3'
 
 import styles from './styles';
 
+const { width } = Dimensions.get('window');
+
 const GRAPH_MARGIN = 20
 const GRAPH_BAR_WIDTH = 5
 const colors = {
-  axis: '#E4E4E4',
-  bars: '#15AD13'
+  axis: 'red',
+  bars: 'tomato'
 }
 
 export default class BarChart extends PureComponent {
