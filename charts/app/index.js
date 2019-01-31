@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 
-import { BarChart } from './components/BarChart';
+import { Chart } from './containers/Chart';
 
 EStyleSheet.build({
   // $outline: 1, // debugging styles
@@ -11,20 +11,15 @@ EStyleSheet.build({
   $border: '#e2e2e2',
   $inputText: '#797979',
   $lightGray: '#f0f0f0',
-  $darkText: '#343434',
+  $darkText: '#343434'
 });
 
- const styles = EStyleSheet.create({
+const styles = EStyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF'
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10
   }
 });
 
@@ -32,8 +27,7 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <BarChart />
+        <Chart />
       </View>
     );
   }

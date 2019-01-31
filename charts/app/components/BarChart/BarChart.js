@@ -1,18 +1,7 @@
 import React, { PureComponent } from 'react';
-import { Dimensions } from 'react-native';
 import { G, Rect, Svg } from 'svgs';
 
-import EStyleSheet from 'react-native-extended-stylesheet';
-
-const { width } = Dimensions.get('window');
-
-const styles = EStyleSheet.create({
-  container: {
-    height: 250,
-    width: width,
-    backgroundColor: '#323232'
-  }
-});
+import styles from './styles';
 
 export default class BarChart extends PureComponent {
   render() {
