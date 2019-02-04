@@ -5,7 +5,8 @@ import {
   AxisGeneration,
   BarGeneration,
   BarLine,
-  BarChart
+  BarChart,
+  JenChart
 } from '../../components/BarChart';
 
 import styles from './styles';
@@ -22,49 +23,52 @@ export default class Chart extends PureComponent {
         label: 'Jan',
         value: {
           income: 500,
-          spending: 250
+          spending: 250,
+          nett: 250
         }
       },
       {
         label: 'Feb',
         value: {
-          income: 700,
-          spending: 200
+          income: 550,
+          spending: 700,
+          nett: 150
         }
       },
       {
         label: 'Mar',
         value: {
           income: 600,
-          spending: 350
+          spending: 350,
+          nett: 350
         }
       },
       {
         label: 'Apr',
         value: {
           income: 550,
-          spending: 150
+          spending: 150,
+          nett: 400
         }
       },
       {
         label: 'May',
         value: {
           income: 500,
-          spending: 450
+          spending: 450,
+          nett: 450
         }
       },
       {
         label: 'Jun',
         value: {
           income: 500,
-          spending: 250
+          spending: 250,
+          nett: 300
         }
       }
       //   { label: 'Jul', value: 650 },
-      //   {
-      //     label: 'Aug',
-      //     value: 500
-      //   }
+      //   { label: 'Aug', value: 500 },
       //   { label: 'Sep', value: 123 },
       //   { label: 'Oct', value: 186 },
       //   { label: 'Nov', value: 689 },
@@ -74,6 +78,11 @@ export default class Chart extends PureComponent {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>Welcome to React Native!</Text>
+
+        <View style={styles.section}>
+          <Text style={styles.welcome}>JenChart</Text>
+          <JenChart data={data} round={100} unit='€' />
+        </View>
 
         <View style={styles.section}>
           <Text style={styles.welcome}>BarChart</Text>

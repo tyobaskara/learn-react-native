@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Dimensions } from 'react-native';
-import { Svg, G, Line, Rect, Text } from 'svgs';
+import { Svg, G, Line, Rect, Text, Circle } from 'svgs';
 import * as d3 from 'd3';
 
 import styles from './styles';
@@ -17,7 +17,7 @@ const colors = {
   }
 };
 
-export default class BarChart extends PureComponent {
+export default class JenChart extends PureComponent {
   render() {
     // Dimensions
     const SVGHeight = 150;
@@ -36,7 +36,9 @@ export default class BarChart extends PureComponent {
       .padding(1);
 
     // Y scale linear
-    const maxValue = d3.max(data, d => d.value.income);
+    const maxValue = d3.max(data, d =>
+      d.value.income > d.value.spending ? d.value.income : d.value.spending
+    );
     const topValue = Math.ceil(maxValue / this.props.round) * this.props.round;
     const yDomain = [0, topValue];
     const yRange = [0, graphHeight];
@@ -55,18 +57,6 @@ export default class BarChart extends PureComponent {
         style={{ backgroundColor: '#fff' }}
       >
         <G y={graphHeight + GRAPH_MARGIN}>
-          {/* Top value label */}
-          <Text
-            x={graphWidth}
-            textAnchor='end'
-            y={y(topValue) * -1 - 5}
-            fontSize={12}
-            fill='black'
-            fillOpacity={0.4}
-          >
-            {topValue + ' ' + this.props.unit}
-          </Text>
-
           {/* top axis */}
           <Line
             x1='0'
@@ -113,9 +103,9 @@ export default class BarChart extends PureComponent {
           ))}
         </G>
 
-        {/* bars */}
         {data.map(item => (
           <G y={graphHeight + GRAPH_MARGIN} key={'bar' + item.label}>
+            {/* bars */}
             <Rect
               x={x(item.label) - GRAPH_BAR_WIDTH / 2}
               y={y(item.value.income) * -1}
@@ -124,8 +114,41 @@ export default class BarChart extends PureComponent {
               height={y(item.value.income)}
               fill={colors.bars.income}
             />
+            <Rect
+              x={x(item.label) + 7}
+              y={y(item.value.spending) * -1}
+              rx={2.5}
+              width={GRAPH_BAR_WIDTH}
+              height={y(item.value.spending)}
+              fill={colors.bars.spending}
+            />
+
+						{/* Draw Line Dot */}
+            <Circle
+              cx={x(item.label) + 5}
+              cy={y(item.value.nett) * -1}
+              r='4'
+              fill='#00a4de'
+            />
           </G>
         ))}
+
+        {data.map(
+          (item, index, array) =>
+            index < array.length - 1 && (
+              <G y={graphHeight + GRAPH_MARGIN} key={'bar' + item.label}>
+                {/* Draw Line */}
+                <Line
+                  x1={x(array[index].label) + 5}
+                  y1={y(array[index].value.nett) * -1}
+                  x2={x(array[index + 1].label) + 5}
+                  y2={y(array[index + 1].value.nett) * -1}
+                  stroke='#00a4de'
+                  strokeWidth='3'
+                />
+              </G>
+            )
+        )}
       </Svg>
     );
   }
