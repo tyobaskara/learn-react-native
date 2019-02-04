@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { Svg, G, Line, Rect } from 'svgs';
 import * as d3 from 'd3';
 
-const GRAPH_MARGIN = 20;
+const GRAPH_MARGIN = 0;
 const GRAPH_BAR_WIDTH = 5;
 const colors = {
   axis: '#E4E4E4',
@@ -28,25 +28,44 @@ export default class BarGeneration extends PureComponent {
       .padding(1);
 
     // Y scale linear
-    const yDomain = [0, d3.max(data, d => d.value)];
+    const yDomain = [0, d3.max(data, d => d.value.income)];
     const yRange = [0, graphHeight];
     const y = d3
       .scaleLinear()
       .domain(yDomain)
       .range(yRange);
 
+    console.log('-------------');
+    console.log('SVGHeight, graphHeight', SVGHeight, graphHeight);
+    console.log('SVGWidth, graphWidth', SVGWidth, graphWidth);
+    console.log('-------------');
+    console.log('xDomain', xDomain);
+    console.log('xRange', xRange);
+    console.log('-------------');
+    data.map(item => {
+      console.log('xxxxxxxxxxxxxxx');
+      console.log(x(item.label));
+      console.log(x(item.label) - GRAPH_BAR_WIDTH / 2);
+      console.log('yyyyyyyyyyyyyyy');
+      console.log(y(item.value.income));
+      console.log(y(item.value.income) * -1);
+    });
+    console.log('-------------');
+    console.log('yDomain', yDomain);
+    console.log('yRange', yRange);
+
     return (
-      <Svg width={SVGWidth} height={SVGHeight}>
+      <Svg width={SVGWidth} height={SVGHeight} style={{backgroundColor: '#f5f5f5'}}>
         <G y={graphHeight}>
           {/* bars */}
           {data.map(item => (
             <Rect
               key={item.label}
               x={x(item.label) - GRAPH_BAR_WIDTH / 2}
-              y={y(item.value) * -1}
+              y={y(item.value.income) * -1}
               rx={2.5}
               width={GRAPH_BAR_WIDTH}
-              height={y(item.value)}
+              height={y(item.value.income)}
               fill={colors.bars}
             />
           ))}

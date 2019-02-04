@@ -8,10 +8,13 @@ import styles from './styles';
 const { width } = Dimensions.get('window');
 
 const GRAPH_MARGIN = 20;
-const GRAPH_BAR_WIDTH = 5;
+const GRAPH_BAR_WIDTH = 10;
 const colors = {
-  axis: 'red',
-  bars: 'tomato'
+  axis: '#f5f5f5',
+  bars: {
+    income: '#8fbc5a',
+    spending: '#fc9d13'
+  }
 };
 
 export default class BarChart extends PureComponent {
@@ -33,7 +36,7 @@ export default class BarChart extends PureComponent {
       .padding(1);
 
     // Y scale linear
-    const maxValue = d3.max(data, d => d.value);
+    const maxValue = d3.max(data, d => d.value.income);
     const topValue = Math.ceil(maxValue / this.props.round) * this.props.round;
     const yDomain = [0, topValue];
     const yRange = [0, graphHeight];
@@ -46,7 +49,11 @@ export default class BarChart extends PureComponent {
     const middleValue = topValue / 2;
 
     return (
-      <Svg width={SVGWidth} height={SVGHeight}>
+      <Svg
+        width={SVGWidth}
+        height={SVGHeight}
+        style={{ backgroundColor: '#fff' }}
+      >
         <G y={graphHeight + GRAPH_MARGIN}>
           {/* Top value label */}
           <Text
@@ -68,7 +75,7 @@ export default class BarChart extends PureComponent {
             y2={y(topValue) * -1}
             stroke={colors.axis}
             strokeDasharray={[3, 3]}
-            strokeWidth='0.5'
+            strokeWidth='3'
           />
 
           {/* middle axis */}
@@ -79,7 +86,7 @@ export default class BarChart extends PureComponent {
             y2={y(middleValue) * -1}
             stroke={colors.axis}
             strokeDasharray={[3, 3]}
-            strokeWidth='0.5'
+            strokeWidth='3'
           />
 
           {/* bottom axis */}
@@ -89,21 +96,8 @@ export default class BarChart extends PureComponent {
             x2={graphWidth}
             y2='2'
             stroke={colors.axis}
-            strokeWidth='0.5'
+            strokeWidth='3'
           />
-
-          {/* bars */}
-          {data.map(item => (
-            <Rect
-              key={'bar' + item.label}
-              x={x(item.label) - GRAPH_BAR_WIDTH / 2}
-              y={y(item.value) * -1}
-              rx={2.5}
-              width={GRAPH_BAR_WIDTH}
-              height={y(item.value)}
-              fill={colors.bars}
-            />
-          ))}
 
           {/* labels */}
           {data.map(item => (
@@ -118,6 +112,30 @@ export default class BarChart extends PureComponent {
             </Text>
           ))}
         </G>
+
+        {/* bars */}
+        {data.map(item => (
+          <G y={graphHeight + GRAPH_MARGIN}>
+            <Rect
+              key={'bar' + item.label}
+              x={x(item.label) - GRAPH_BAR_WIDTH / 2}
+              y={y(item.value.income) * -1}
+              rx={2.5}
+              width={GRAPH_BAR_WIDTH}
+              height={y(item.value.income)}
+              fill={colors.bars.income}
+            />
+            <Rect
+              key={'bar' + item.label}
+              x={x(item.label) + 7}
+              y={y(item.value.spending) * -1}
+              rx={2.5}
+              width={GRAPH_BAR_WIDTH}
+              height={y(item.value.spending)}
+              fill={colors.bars.spending}
+            />
+          </G>
+        ))}
       </Svg>
     );
   }

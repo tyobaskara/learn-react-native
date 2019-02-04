@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
+import { Dimensions } from 'react-native';
 import { Svg, G, Line } from 'svgs';
 
+const { width } = Dimensions.get('window');
 const GRAPH_MARGIN = 20;
 const colors = {
   axis: 'red'

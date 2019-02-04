@@ -7,7 +7,7 @@ const { width } = Dimensions.get('window');
 export default class BarLine extends PureComponent {
   render() {
     const SVGHeight = 150;
-    const SVGWidth = width - 75;
+    const SVGWidth = 300;
     const barWidth = 15;
     const graphHeight = 150;
 

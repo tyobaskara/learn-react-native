@@ -10,7 +10,7 @@ export default EStyleSheet.create({
     margin: 10
   },
   section: {
-    padding: 25,
+    padding: 5,
     backgroundColor: 'white',
     marginBottom: 10
   }
