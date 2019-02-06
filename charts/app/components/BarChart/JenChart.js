@@ -21,7 +21,7 @@ export default class JenChart extends PureComponent {
       x='5'
       textAnchor='start'
       y={y ? ((y(value) * -1) - 5) : -2}
-      fontSize={12}
+      fontSize={10}
       fill='black'
       fillOpacity={0.4}
     >
