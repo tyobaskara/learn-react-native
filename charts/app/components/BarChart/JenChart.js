@@ -6,39 +6,66 @@ import * as d3 from 'd3';
 const { width } = Dimensions.get('window');
 
 export default class JenChart extends PureComponent {
+  _formatAxisLabel = value => value / 1000000 + 'M';
+
+  _axisLabel = (y, value) => (
+    <Text
+      x='5'
+      textAnchor='start'
+      y={y ? y(value) * -1 - 5 : 0}
+      fontSize={12}
+      fill='black'
+      fillOpacity={0.4}
+    >
+      {value ? this._formatAxisLabel(value) : 0}
+    </Text>
+  );
+
   _drawTopAxis = (axisColors, topValue, graphWidth, y) => (
-    <Line
-      x1='0'
-      y1={y(topValue) * -1}
-      x2={graphWidth}
-      y2={y(topValue) * -1}
-      stroke={axisColors.axis}
-      strokeDasharray={[3, 3]}
-      strokeWidth='3'
-    />
+    <G>
+      <Line
+        x1='0'
+        y1={y(topValue) * -1}
+        x2={graphWidth}
+        y2={y(topValue) * -1}
+        stroke={axisColors.axis}
+        strokeDasharray={[3, 3]}
+        strokeWidth='3'
+      />
+
+      {this._axisLabel(y, topValue)}
+    </G>
   );
 
   _drawMiddleAxis = (axisColors, middleValue, graphWidth, y) => (
-    <Line
-      x1='0'
-      y1={y(middleValue) * -1}
-      x2={graphWidth}
-      y2={y(middleValue) * -1}
-      stroke={axisColors.axis}
-      strokeDasharray={[3, 3]}
-      strokeWidth='3'
-    />
+    <G>
+      <Line
+        x1='0'
+        y1={y(middleValue) * -1}
+        x2={graphWidth}
+        y2={y(middleValue) * -1}
+        stroke={axisColors.axis}
+        strokeDasharray={[3, 3]}
+        strokeWidth='3'
+      />
+
+      {this._axisLabel(y, middleValue)}
+    </G>
   );
 
   _drawBottomAxis = (axisColors, graphWidth) => (
-    <Line
-      x1='0'
-      y1='2'
-      x2={graphWidth}
-      y2='2'
-      stroke={axisColors.axis}
-      strokeWidth='3'
-    />
+    <G>
+      <Line
+        x1='0'
+        y1='2'
+        x2={graphWidth}
+        y2='2'
+        stroke={axisColors.axis}
+        strokeWidth='3'
+      />
+
+      {this._axisLabel()}
+    </G>
   );
 
   _drawBottomLabels = (item, x, labelTopStyles, labelBottomStyles) => (
@@ -88,7 +115,7 @@ export default class JenChart extends PureComponent {
     <Circle
       cx={x(item.label) + 5}
       cy={y(item.value.nett) * -1}
-			{...circleStyles}
+      {...circleStyles}
     />
   );
 
@@ -106,8 +133,8 @@ export default class JenChart extends PureComponent {
     const {
       axisColor,
       barColor,
-			barWidth,
-			circleStyle,
+      barWidth,
+      circleStyle,
       lineStyle,
       marginVertical,
       labelTopStyle,
@@ -124,12 +151,12 @@ export default class JenChart extends PureComponent {
       barLeft: '#8fbc5a',
       barRight: '#fc9d13',
       ...barColor
-		};
-		const circleStyles = {
-			r: '3',
-			fill: '#00a4de',
-			...circleStyle
-		}
+    };
+    const circleStyles = {
+      r: '3',
+      fill: '#00a4de',
+      ...circleStyle
+    };
     const labelTopStyles = {
       fill: '#7d7d7d',
       fontSize: '10',
@@ -171,8 +198,13 @@ export default class JenChart extends PureComponent {
       .padding(1);
 
     // Y scale linear
-    const maxValue = d3.max(data, d =>
-      d.value.income > d.value.spending ? d.value.income : d.value.spending
+    const maxValue = d3.max(data, d => {
+			const maxOne = d.value.income > d.value.spending ? d.value.income : d.value.spending;
+			const maxTwo = maxOne > d.value.nett ? maxOne : d.value.nett;
+
+			return maxTwo;
+		}
+      
     );
     const topValue = Math.ceil(maxValue / this.props.round) * this.props.round;
     const yDomain = [0, topValue];
