@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { View, Text } from 'react-native';
 
+import data from './data';
 import {
   AxisGeneration,
   BarGeneration,
@@ -18,89 +19,63 @@ export default class Chart extends PureComponent {
   }
 
   render() {
-    const data = [
-      {
-        label: 'Jan',
-        value: {
-          income: 500,
-          spending: 250,
-          nett: 250
-        }
-      },
-      {
-        label: 'Feb',
-        value: {
-          income: 550,
-          spending: 700,
-          nett: 150
-        }
-      },
-      {
-        label: 'Mar',
-        value: {
-          income: 600,
-          spending: 350,
-          nett: 350
-        }
-      },
-      {
-        label: 'Apr',
-        value: {
-          income: 550,
-          spending: 150,
-          nett: 400
-        }
-      },
-      {
-        label: 'May',
-        value: {
-          income: 500,
-          spending: 450,
-          nett: 450
-        }
-      },
-      {
-        label: 'Jun',
-        value: {
-          income: 500,
-          spending: 250,
-          nett: 300
-        }
-      }
-      //   { label: 'Jul', value: 650 },
-      //   { label: 'Aug', value: 500 },
-      //   { label: 'Sep', value: 123 },
-      //   { label: 'Oct', value: 186 },
-      //   { label: 'Nov', value: 689 },
-      //   { label: 'Dec', value: 643 }
-    ];
-
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-
         <View style={styles.section}>
-          <Text style={styles.welcome}>JenChart</Text>
-          <JenChart data={data} round={100} unit='€' />
+          <Text style={styles.title}>JenChart Default</Text>
+          <JenChart data={data.slice(0,6)} round={100} />
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.welcome}>BarChart</Text>
+          <Text style={styles.title}>JenChart With Props</Text>
+          <JenChart
+            data={data}
+            round={100}
+            axisColor='red'
+            barColor={{ barLeft: 'green', barRight: 'blue' }}
+            circleStyle={{
+              r: '5',
+              fill: 'red'
+            }}
+            marginVertical={50}
+            labelTopStyle={{
+              fill: 'red',
+              fontSize: '10',
+              fontWeight: '600'
+            }}
+            labelBottomStyle={{
+              fill: 'orange',
+              fontSize: '10',
+              fontWeight: '400'
+            }}
+            lineStyle={{
+              stroke: 'magenta',
+              strokeWidth: 3
+            }}
+            svgStyle={{
+              backgroundColor: '#fff',
+              height: 400
+            }}
+          />
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.title}>BarChart</Text>
           <BarChart data={data} round={100} unit='€' />
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.welcome}>Bar Generation</Text>
+          <Text style={styles.title}>Bar Generation</Text>
           <BarGeneration data={data} />
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.welcome}>BarLine</Text>
+          <Text style={styles.title}>BarLine</Text>
           <BarLine />
         </View>
 
         <View style={styles.section}>
-          <Text style={styles.welcome}>Axis Generation</Text>
+          <Text style={styles.title}>Axis Generation</Text>
           <AxisGeneration />
         </View>
       </View>
