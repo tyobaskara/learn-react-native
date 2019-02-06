@@ -7,11 +7,13 @@ const { width } = Dimensions.get('window');
 
 export default class JenChart extends PureComponent {
   _formatAxisLabel = value => {
-    const result = Math.ceil(value);
-
-    return result.toString().length > 6
-      ? result / 1000000 + 'M'
-      : result / 1000 + 'K';
+    if (value.toString().length > 9) {
+      return value / 1000000000 + 'B';
+    } else if (value.toString().length > 6) {
+      return value / 1000000 + 'M';
+    } else {
+      return value / 1000 + 'K';
+    }
   };
 
   _axisLabel = (y, value) => (
