@@ -23,7 +23,7 @@ export default class Chart extends PureComponent {
       <View style={styles.container}>
         <View style={styles.section}>
           <Text style={styles.title}>JenChart Default</Text>
-          <JenChart data={data.slice(0,6)} round={100} />
+          <JenChart data={data.slice(0,6)} />
         </View>
 
         <View style={styles.section}>

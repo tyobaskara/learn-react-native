@@ -20,7 +20,7 @@ export default class JenChart extends PureComponent {
     <Text
       x='5'
       textAnchor='start'
-      y={y ? ((y(value) * -1) - 5) : -2}
+      y={y ? y(value) * -1 - 5 : -2}
       fontSize={10}
       fill='black'
       fillOpacity={0.4}
@@ -59,7 +59,7 @@ export default class JenChart extends PureComponent {
 
       {this._axisLabel(y, middleTopValue)}
     </G>
-	);
+  );
 
   _drawMiddleAxis = (axisColors, middleValue, graphWidth, y) => (
     <G>
@@ -75,7 +75,7 @@ export default class JenChart extends PureComponent {
 
       {this._axisLabel(y, middleValue)}
     </G>
-	);
+  );
 
   _drawMiddleBottomAxis = (axisColors, middleBottomValue, graphWidth, y) => (
     <G>
@@ -109,7 +109,7 @@ export default class JenChart extends PureComponent {
   );
 
   _drawBottomLabels = (item, x, labelTopStyles, labelBottomStyles) => (
-    <G key={'label' + item.label}>
+    <G key={'label' + item.label} onPress={() => alert(item.label)}>
       <Text
         style={labelTopStyles}
         x={x(item.label) + 5}
@@ -190,7 +190,7 @@ export default class JenChart extends PureComponent {
       labelBottomStyle,
       svgStyle
     } = this.props;
-    const GRAPH_MARGIN_VERTICAL = marginVertical || 30;
+    const GRAPH_MARGIN_VERTICAL = marginVertical || 40;
     const GRAPH_BAR_WIDTH = barWidth || 10;
     const axisColors = {
       axis: '#f5f5f5',
@@ -202,7 +202,7 @@ export default class JenChart extends PureComponent {
       ...barColor
     };
     const circleStyles = {
-      r: '4',
+      r: '5',
       fill: '#00a4de',
       ...circleStyle
     };
@@ -255,18 +255,23 @@ export default class JenChart extends PureComponent {
       .domain(yDomain)
       .range(yRange);
 
-		// top axis and middle axis
-		const middleValue = topValue / 2;
-		const middleTopValue = (topValue + middleValue) / 2;
-		const middleBottomValue = middleValue / 2;
+    // top axis and middle axis
+    const middleValue = topValue / 2;
+    const middleTopValue = (topValue + middleValue) / 2;
+    const middleBottomValue = middleValue / 2;
 
     return (
       <Svg style={svgStyles}>
         <G y={graphHeight + GRAPH_MARGIN_VERTICAL}>
           {this._drawTopAxis(axisColors, topValue, graphWidth, y)}
           {this._drawMiddleTopAxis(axisColors, middleTopValue, graphWidth, y)}
-					{this._drawMiddleAxis(axisColors, middleValue, graphWidth, y)}
-					{this._drawMiddleBottomAxis(axisColors, middleBottomValue, graphWidth, y)}
+          {this._drawMiddleAxis(axisColors, middleValue, graphWidth, y)}
+          {this._drawMiddleBottomAxis(
+            axisColors,
+            middleBottomValue,
+            graphWidth,
+            y
+          )}
           {this._drawBottomAxis(axisColors, graphWidth)}
 
           {data.map(item =>
