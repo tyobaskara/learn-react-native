@@ -45,6 +45,22 @@ export default class JenChart extends PureComponent {
     </G>
   );
 
+  _drawMiddleTopAxis = (axisColors, middleTopValue, graphWidth, y) => (
+    <G>
+      <Line
+        x1='0'
+        y1={y(middleTopValue) * -1}
+        x2={graphWidth}
+        y2={y(middleTopValue) * -1}
+        stroke={axisColors.axis}
+        strokeDasharray={[3, 3]}
+        strokeWidth='3'
+      />
+
+      {this._axisLabel(y, middleTopValue)}
+    </G>
+	);
+
   _drawMiddleAxis = (axisColors, middleValue, graphWidth, y) => (
     <G>
       <Line
@@ -58,6 +74,22 @@ export default class JenChart extends PureComponent {
       />
 
       {this._axisLabel(y, middleValue)}
+    </G>
+	);
+
+  _drawMiddleBottomAxis = (axisColors, middleBottomValue, graphWidth, y) => (
+    <G>
+      <Line
+        x1='0'
+        y1={y(middleBottomValue) * -1}
+        x2={graphWidth}
+        y2={y(middleBottomValue) * -1}
+        stroke={axisColors.axis}
+        strokeDasharray={[3, 3]}
+        strokeWidth='3'
+      />
+
+      {this._axisLabel(y, middleBottomValue)}
     </G>
   );
 
@@ -223,14 +255,18 @@ export default class JenChart extends PureComponent {
       .domain(yDomain)
       .range(yRange);
 
-    // top axis and middle axis
-    const middleValue = topValue / 2;
+		// top axis and middle axis
+		const middleValue = topValue / 2;
+		const middleTopValue = (topValue + middleValue) / 2;
+		const middleBottomValue = middleValue / 2;
 
     return (
       <Svg style={svgStyles}>
         <G y={graphHeight + GRAPH_MARGIN_VERTICAL}>
           {this._drawTopAxis(axisColors, topValue, graphWidth, y)}
-          {this._drawMiddleAxis(axisColors, middleValue, graphWidth, y)}
+          {this._drawMiddleTopAxis(axisColors, middleTopValue, graphWidth, y)}
+					{this._drawMiddleAxis(axisColors, middleValue, graphWidth, y)}
+					{this._drawMiddleBottomAxis(axisColors, middleBottomValue, graphWidth, y)}
           {this._drawBottomAxis(axisColors, graphWidth)}
 
           {data.map(item =>
