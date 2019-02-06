@@ -6,7 +6,13 @@ import * as d3 from 'd3';
 const { width } = Dimensions.get('window');
 
 export default class JenChart extends PureComponent {
-  _formatAxisLabel = value => value / 1000000 + 'M';
+  _formatAxisLabel = value => {
+    const result = Math.ceil(value);
+
+    return result.toString().length > 6
+      ? result / 1000000 + 'M'
+      : result / 1000 + 'K';
+  };
 
   _axisLabel = (y, value) => (
     <Text
@@ -129,6 +135,15 @@ export default class JenChart extends PureComponent {
     />
   );
 
+  _getMaxValue = data =>
+    d3.max(data, d => {
+      const maxOne =
+        d.value.income > d.value.spending ? d.value.income : d.value.spending;
+      const maxTwo = maxOne > d.value.nett ? maxOne : d.value.nett;
+
+      return maxTwo;
+    });
+
   render() {
     const {
       axisColor,
@@ -198,15 +213,7 @@ export default class JenChart extends PureComponent {
       .padding(1);
 
     // Y scale linear
-    const maxValue = d3.max(data, d => {
-			const maxOne = d.value.income > d.value.spending ? d.value.income : d.value.spending;
-			const maxTwo = maxOne > d.value.nett ? maxOne : d.value.nett;
-
-			return maxTwo;
-		}
-      
-    );
-    const topValue = Math.ceil(maxValue / this.props.round) * this.props.round;
+    const topValue = Math.ceil(this._getMaxValue(data));
     const yDomain = [0, topValue];
     const yRange = [0, graphHeight];
     const y = d3
