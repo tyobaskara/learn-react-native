@@ -202,7 +202,7 @@ export default class JenChart extends PureComponent {
       ...barColor
     };
     const circleStyles = {
-      r: '3',
+      r: '4',
       fill: '#00a4de',
       ...circleStyle
     };
