@@ -52,7 +52,6 @@ export default class Chart extends PureComponent {
               strokeWidth: 3
             }}
             marginVertical={50}
-            round={100}
             svgStyle={{
               backgroundColor: '#fff',
               height: 400
