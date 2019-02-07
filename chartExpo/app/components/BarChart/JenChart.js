@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Dimensions } from 'react-native';
-import { Svg, G, Line, Rect, Text, Circle, Polygon } from 'svgs';
+import { Svg, G, Line, Rect, Text, Circle, Image } from 'svgs';
 import * as d3 from 'd3';
 
 const { width } = Dimensions.get('window');
@@ -11,7 +11,7 @@ export default class JenChart extends PureComponent {
 
     this.state = {
       data: this.props.data,
-      isActive: 'Apr'
+      isActive: 'Apr2018'
     };
   }
 
@@ -141,6 +141,19 @@ export default class JenChart extends PureComponent {
         >
           {item.year}
         </Text>
+
+        {this._isActive(item) && (
+          <Image
+            x={x(item.label)}
+            y='30'
+            width='10'
+            height='10'
+            preserveAspectRatio='xMidYMid slice'
+            opacity='1'
+            href={require('./triangle.png')}
+            clipPath='url(#clip)'
+          />
+        )}
       </G>
     );
   };
@@ -194,8 +207,7 @@ export default class JenChart extends PureComponent {
     });
 
   _rectOnPress = item => {
-    this.setState({ isActive: item.label });
-    alert(item.label);
+    this.setState({ isActive: item.label + item.year });
   };
 
   _drawRectOnPress = (item, x, GRAPH_BAR_WIDTH, graphHeight) => (
@@ -209,7 +221,8 @@ export default class JenChart extends PureComponent {
     />
   );
 
-  _isActive = item => this.state.isActive === item.label && true;
+  _isActive = item =>
+    this.state.isActive === item.label + item.year && true;
 
   render() {
     const {
