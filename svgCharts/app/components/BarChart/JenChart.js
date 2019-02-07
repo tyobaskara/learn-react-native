@@ -218,13 +218,13 @@ export default class JenChart extends PureComponent {
     this.setState({ isActive: item.label + item.year });
   };
 
-  _drawRectOnPress = (item, x, GRAPH_BAR_WIDTH, graphHeight) => (
+  _drawRectOnPress = (item, x, GRAPH_BAR_WIDTH, graphHeight, GRAPH_MARGIN_VERTICAL) => (
     <Rect
       x={x(item.label) - GRAPH_BAR_WIDTH / 2}
       y={graphHeight * -1}
       width={x(item.label) - GRAPH_BAR_WIDTH / 2}
-      height={graphHeight + 40}
-      fill='transparent'
+      height={graphHeight + GRAPH_MARGIN_VERTICAL}
+      fill='none'
       onPress={() => this._rectOnPress(item)}
     />
   );
@@ -288,7 +288,7 @@ export default class JenChart extends PureComponent {
     const SVGHeight = svgStyles.height;
     const SVGWidth = svgStyles.width;
     const graphHeight = SVGHeight - 2 * GRAPH_MARGIN_VERTICAL;
-    const graphWidth = SVGWidth - 2;
+    const graphWidth = SVGWidth;
 
     // X scale point
     const xDomain = data.map(item => item.label);
@@ -362,7 +362,7 @@ export default class JenChart extends PureComponent {
             y={graphHeight + GRAPH_MARGIN_VERTICAL}
             key={'rectOnPress' + item.label}
           >
-            {this._drawRectOnPress(item, x, GRAPH_BAR_WIDTH, graphHeight)}
+            {this._drawRectOnPress(item, x, GRAPH_BAR_WIDTH, graphHeight, GRAPH_MARGIN_VERTICAL)}
           </G>
         ))}
       </Svg>
