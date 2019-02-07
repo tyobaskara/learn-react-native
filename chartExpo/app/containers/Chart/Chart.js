@@ -23,21 +23,20 @@ export default class Chart extends PureComponent {
       <View style={styles.container}>
         <View style={styles.section}>
           <Text style={styles.title}>JenChart Default</Text>
-          <JenChart data={data.slice(0,6)} />
+          <JenChart data={data.slice(0, 6)}/>
         </View>
 
         <View style={styles.section}>
           <Text style={styles.title}>JenChart With Props</Text>
           <JenChart
-            data={data}
-            round={100}
+            activeColor='green' 
             axisColor='red'
             barColor={{ barLeft: 'green', barRight: 'blue' }}
             circleStyle={{
               r: '5',
               fill: 'red'
             }}
-            marginVertical={50}
+            data={data}
             labelTopStyle={{
               fill: 'red',
               fontSize: '10',
@@ -52,6 +51,8 @@ export default class Chart extends PureComponent {
               stroke: 'magenta',
               strokeWidth: 3
             }}
+            marginVertical={50}
+            round={100}
             svgStyle={{
               backgroundColor: '#fff',
               height: 400

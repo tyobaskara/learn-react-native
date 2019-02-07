@@ -117,10 +117,18 @@ export default class JenChart extends PureComponent {
     </G>
   );
 
-  _drawBottomLabels = (item, x, labelTopStyles, labelBottomStyles) => {
+  _drawBottomLabels = (
+    item,
+    x,
+    labelTopStyles,
+    labelBottomStyles,
+    GRAPH_MARGIN_VERTICAL
+  ) => {
+    const { activeColor } = this.props;
     const labelActiveStyles = this._isActive(item) && {
-      fill: '#00a4de'
+      fill: activeColor ? activeColor : '#00a4de'
     };
+    const triangleSize = 10;
 
     return (
       <G key={'label' + item.label}>
@@ -145,9 +153,9 @@ export default class JenChart extends PureComponent {
         {this._isActive(item) && (
           <Image
             x={x(item.label)}
-            y='30'
-            width='10'
-            height='10'
+            y={GRAPH_MARGIN_VERTICAL - triangleSize}
+            width={triangleSize}
+            height={triangleSize}
             preserveAspectRatio='xMidYMid slice'
             opacity='1'
             href={require('./triangle.png')}
@@ -221,8 +229,7 @@ export default class JenChart extends PureComponent {
     />
   );
 
-  _isActive = item =>
-    this.state.isActive === item.label + item.year && true;
+  _isActive = item => this.state.isActive === item.label + item.year && true;
 
   render() {
     const {
@@ -321,7 +328,13 @@ export default class JenChart extends PureComponent {
           {this._drawBottomAxis(axisColors, graphWidth)}
 
           {data.map(item =>
-            this._drawBottomLabels(item, x, labelTopStyles, labelBottomStyles)
+            this._drawBottomLabels(
+              item,
+              x,
+              labelTopStyles,
+              labelBottomStyles,
+              GRAPH_MARGIN_VERTICAL
+            )
           )}
         </G>
 
