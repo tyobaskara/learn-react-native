@@ -8,9 +8,10 @@ import {
   AxisGeneration,
   BarGeneration,
   BarLine,
-  BarChart,
-  JenChart
+  BarChart
 } from '../../components/BarChart';
+
+import { JenChart } from 'jenchart';
 
 import styles from './styles';
 
@@ -51,14 +52,15 @@ export default class Chart extends PureComponent {
             data={data}
             labelTopStyle={{
               fill: 'red',
-              fontSize: '10',
+              fontSize: '13',
               fontWeight: '600'
             }}
             labelBottomStyle={{
               fill: 'orange',
-              fontSize: '10',
+              fontSize: '13',
               fontWeight: '400'
             }}
+            labelBottomPosition={30}
             lineStyle={{
               stroke: 'magenta',
               strokeWidth: 3
