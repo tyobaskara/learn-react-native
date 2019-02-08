@@ -234,17 +234,27 @@ export default class JenChart extends PureComponent {
     x,
     GRAPH_BAR_WIDTH,
     graphHeight,
-    GRAPH_MARGIN_VERTICAL
-  ) => (
-    <Rect
-      x={x(item.label) - GRAPH_BAR_WIDTH / 2}
-      y={graphHeight * -1}
-      width={x(item.label) - GRAPH_BAR_WIDTH / 2}
-      height={graphHeight + GRAPH_MARGIN_VERTICAL}
-      fill='none'
-      onPress={() => this._rectOnPress(index, item)}
-    />
-  );
+    GRAPH_MARGIN_VERTICAL,
+    platform
+  ) => {
+    const propsOnpress = {};
+    
+    if (platform !== 'web') {
+      propsOnpress.onPress = () => this._rectOnPress(index, item);
+    }
+
+    return (
+      <Rect
+        x={x(item.label) - GRAPH_BAR_WIDTH / 2}
+        y={graphHeight * -1}
+        width={x(item.label) - GRAPH_BAR_WIDTH / 2}
+        height={graphHeight + GRAPH_MARGIN_VERTICAL}
+        fill='transparent'
+        opacity='0.5'
+        {...propsOnpress}
+      />
+    );
+  };
 
   _activeIndex = index => this.state.activeIndex === index.toString() && true;
 
@@ -258,6 +268,7 @@ export default class JenChart extends PureComponent {
       marginVertical,
       labelTopStyle,
       labelBottomStyle,
+      platform,
       svgStyles
     } = this.props;
     const GRAPH_MARGIN_VERTICAL = marginVertical || 40;
@@ -369,21 +380,41 @@ export default class JenChart extends PureComponent {
             )
         )}
 
-        {data.map((item, index, array) => (
-          <G
-            y={graphHeight + GRAPH_MARGIN_VERTICAL}
-            key={'rectOnPress' + item.label}
-          >
-            {this._drawRectOnPress(
-              index,
-              item,
-              x,
-              GRAPH_BAR_WIDTH,
-              graphHeight,
-              GRAPH_MARGIN_VERTICAL
-            )}
-          </G>
-        ))}
+        {data.map((item, index, array) =>
+          platform === 'web' ? (
+            <Svg
+              y={graphHeight + GRAPH_MARGIN_VERTICAL}
+              key={'rectOnPress' + item.label}
+              onClick={() => this._rectOnPress(index, item)}
+              style={{ overflow: 'initial' }}
+            >
+              {this._drawRectOnPress(
+                index,
+                item,
+                x,
+                GRAPH_BAR_WIDTH,
+                graphHeight,
+                GRAPH_MARGIN_VERTICAL,
+                platform
+              )}
+            </Svg>
+          ) : (
+            <G
+              y={graphHeight + GRAPH_MARGIN_VERTICAL}
+              key={'rectOnPress' + item.label}
+            >
+              {this._drawRectOnPress(
+                index,
+                item,
+                x,
+                GRAPH_BAR_WIDTH,
+                graphHeight,
+                GRAPH_MARGIN_VERTICAL,
+                platform
+              )}
+            </G>
+          )
+        )}
       </Svg>
     );
   }

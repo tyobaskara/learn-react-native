@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Dimensions, View, Text } from 'react-native';
+import { Dimensions, View, Text, Platform } from 'react-native';
 
 const { width } = Dimensions.get('window');
 
@@ -28,6 +28,7 @@ export default class Chart extends PureComponent {
             data={data.slice(0, 6)}
             onPress={(index, item) => this._onPress(index, item)}
             activeIndex='3'
+            platform={Platform.OS}
             svgStyles={{
               backgroundColor: '#fff',
               width: width,
@@ -64,6 +65,7 @@ export default class Chart extends PureComponent {
             }}
             marginVertical={50}
             onPress={(index, item) => this._onPress(index, item)}
+            platform={Platform.OS}
             svgStyles={{
               backgroundColor: '#fff',
               width: width,
