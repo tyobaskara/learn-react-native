@@ -1,5 +1,7 @@
 import React, { PureComponent } from 'react';
-import { View, Text } from 'react-native';
+import { Dimensions, View, Text } from 'react-native';
+
+const { width } = Dimensions.get('window');
 
 import data from './data';
 import {
@@ -13,23 +15,32 @@ import {
 import styles from './styles';
 
 export default class Chart extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+  _onPress = (index, item) => {
+    console.log(index, item);
+  };
 
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.section}>
           <Text style={styles.title}>JenChart Default</Text>
-          <JenChart data={data.slice(0, 6)}/>
+          <JenChart
+            data={data.slice(0, 6)}
+            onPress={(index, item) => this._onPress(index, item)}
+            activeIndex='3'
+            svgStyles={{
+              backgroundColor: '#fff',
+              width: width,
+              height: 250
+            }}
+          />
         </View>
 
         <View style={styles.section}>
           <Text style={styles.title}>JenChart With Props</Text>
           <JenChart
-            activeColor='green' 
+            activeColor='green'
+            activeIndex='0'
             axisColor='red'
             barColor={{ barLeft: 'green', barRight: 'blue' }}
             circleStyle={{
@@ -52,8 +63,10 @@ export default class Chart extends PureComponent {
               strokeWidth: 3
             }}
             marginVertical={50}
-            svgStyle={{
+            onPress={(index, item) => this._onPress(index, item)}
+            svgStyles={{
               backgroundColor: '#fff',
+              width: width,
               height: 400
             }}
           />

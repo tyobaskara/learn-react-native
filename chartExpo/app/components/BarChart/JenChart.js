@@ -1,9 +1,6 @@
 import React, { PureComponent } from 'react';
-import { Dimensions } from 'react-native';
 import { Svg, G, Line, Rect, Text, Circle, Image } from 'svgs';
 import * as d3 from 'd3';
-
-const { width } = Dimensions.get('window');
 
 export default class JenChart extends PureComponent {
   constructor(props) {
@@ -11,8 +8,19 @@ export default class JenChart extends PureComponent {
 
     this.state = {
       data: this.props.data,
-      isActive: 'Apr2018'
+      activeIndex: '0'
     };
+  }
+
+  componentWillMount() {
+    const { activeIndex, data } = this.props;
+
+    if (activeIndex) {
+      this.setState({ activeIndex });
+    }
+    if (parseInt(activeIndex) + 1 > data.length) {
+      console.warn('activeIndex props exceeds the data length.');
+    }
   }
 
   _formatAxisLabel = value => {
@@ -118,6 +126,7 @@ export default class JenChart extends PureComponent {
   );
 
   _drawBottomLabels = (
+    index,
     item,
     x,
     labelTopStyles,
@@ -125,7 +134,7 @@ export default class JenChart extends PureComponent {
     GRAPH_MARGIN_VERTICAL
   ) => {
     const { activeColor } = this.props;
-    const labelActiveStyles = this._isActive(item) && {
+    const labelActiveStyles = this._activeIndex(index) && {
       fill: activeColor ? activeColor : '#00a4de'
     };
     const triangleSize = 10;
@@ -150,7 +159,7 @@ export default class JenChart extends PureComponent {
           {item.year}
         </Text>
 
-        {this._isActive(item) && (
+        {this._activeIndex(index) && (
           <Image
             x={x(item.label)}
             y={GRAPH_MARGIN_VERTICAL - triangleSize}
@@ -214,22 +223,30 @@ export default class JenChart extends PureComponent {
       return maxTwo;
     });
 
-  _rectOnPress = item => {
-    this.setState({ isActive: item.label + item.year });
+  _rectOnPress = (index, item) => {
+    this.setState({ activeIndex: index.toString() });
+    this.props.onPress(index, item);
   };
 
-  _drawRectOnPress = (item, x, GRAPH_BAR_WIDTH, graphHeight, GRAPH_MARGIN_VERTICAL) => (
+  _drawRectOnPress = (
+    index,
+    item,
+    x,
+    GRAPH_BAR_WIDTH,
+    graphHeight,
+    GRAPH_MARGIN_VERTICAL
+  ) => (
     <Rect
       x={x(item.label) - GRAPH_BAR_WIDTH / 2}
       y={graphHeight * -1}
       width={x(item.label) - GRAPH_BAR_WIDTH / 2}
       height={graphHeight + GRAPH_MARGIN_VERTICAL}
       fill='none'
-      onPress={() => this._rectOnPress(item)}
+      onPress={() => this._rectOnPress(index, item)}
     />
   );
 
-  _isActive = item => this.state.isActive === item.label + item.year && true;
+  _activeIndex = index => this.state.activeIndex === index.toString() && true;
 
   render() {
     const {
@@ -241,7 +258,7 @@ export default class JenChart extends PureComponent {
       marginVertical,
       labelTopStyle,
       labelBottomStyle,
-      svgStyle
+      svgStyles
     } = this.props;
     const GRAPH_MARGIN_VERTICAL = marginVertical || 40;
     const GRAPH_BAR_WIDTH = barWidth || 10;
@@ -275,12 +292,6 @@ export default class JenChart extends PureComponent {
       stroke: '#00a4de',
       strokeWidth: 3,
       ...lineStyle
-    };
-    const svgStyles = {
-      backgroundColor: '#fff',
-      width: width,
-      height: 250,
-      ...svgStyle
     };
 
     // Dimensions
@@ -327,8 +338,9 @@ export default class JenChart extends PureComponent {
           )}
           {this._drawBottomAxis(axisColors, graphWidth)}
 
-          {data.map(item =>
+          {data.map((item, index, array) =>
             this._drawBottomLabels(
+              index,
               item,
               x,
               labelTopStyles,
@@ -357,12 +369,19 @@ export default class JenChart extends PureComponent {
             )
         )}
 
-        {data.map(item => (
+        {data.map((item, index, array) => (
           <G
             y={graphHeight + GRAPH_MARGIN_VERTICAL}
             key={'rectOnPress' + item.label}
           >
-            {this._drawRectOnPress(item, x, GRAPH_BAR_WIDTH, graphHeight, GRAPH_MARGIN_VERTICAL)}
+            {this._drawRectOnPress(
+              index,
+              item,
+              x,
+              GRAPH_BAR_WIDTH,
+              graphHeight,
+              GRAPH_MARGIN_VERTICAL
+            )}
           </G>
         ))}
       </Svg>
