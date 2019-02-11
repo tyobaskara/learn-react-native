@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Dimensions, View, Text, Platform } from 'react-native';
+import { Dimensions, View, Text, Platform, ScrollView } from 'react-native';
 
 const { width } = Dimensions.get('window');
 
@@ -22,7 +22,7 @@ export default class Chart extends PureComponent {
 
   render() {
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <View style={styles.section}>
           <Text style={styles.title}>JenChart Default</Text>
           <JenChart
@@ -38,12 +38,18 @@ export default class Chart extends PureComponent {
           />
         </View>
 
-        {/* <View style={styles.section}>
-          <Text style={styles.title}>JenChart With Props</Text>
+        <Text style={styles.title}>JenChart With Props</Text>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={styles.sectionScroll}
+        >
           <JenChart
             activeColor='green'
             activeIndex='0'
-            axisColor='red'
+            axisColor='lightblue'
+            axisLabelColor='brown'
+            axisLabelSize='12'
             barColor={{ barLeft: 'green', barRight: 'blue' }}
             circleStyle={{
               r: '5',
@@ -70,11 +76,11 @@ export default class Chart extends PureComponent {
             platform={Platform.OS}
             svgStyles={{
               backgroundColor: '#fff',
-              width: width,
+              width: 700,
               height: 400
             }}
           />
-        </View> */}
+        </ScrollView>
 
         <View style={styles.section}>
           <Text style={styles.title}>BarChart</Text>
@@ -95,7 +101,7 @@ export default class Chart extends PureComponent {
           <Text style={styles.title}>Axis Generation</Text>
           <AxisGeneration />
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }
