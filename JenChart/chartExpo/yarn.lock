@@ -3377,10 +3377,10 @@ isomorphic-fetch@^2.1.1:
     node-fetch "^1.0.1"
     whatwg-fetch ">=0.10.0"
 
-jenchart@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/jenchart/-/jenchart-1.0.2.tgz#694f99e5e7bd70d99c3dab1d9727f50aef5f9864"
-  integrity sha512-eXQxYL6HhfxyEWNgKLhhtv942QDkb0QaEnh4wxAJ0pwzA24/1zK9W7DiOUx2lxWN+/1ewv/kwdN8vBPFS2VD6Q==
+jenchart@^1.0.15:
+  version "1.0.15"
+  resolved "https://registry.yarnpkg.com/jenchart/-/jenchart-1.0.15.tgz#94716a2a4b39b8c09ead2401c55a999885a02645"
+  integrity sha512-yIQ5pkbRPH65L8k5XtQ3AICbFqjNu/zPckL1DGzLgFri0jG9W4+PWQhM+LFcnEB36YuKXPTb6oOboAajjffhNQ==
 
 jest-docblock@23.2.0, jest-docblock@^23.2.0:
   version "23.2.0"
@@ -4614,6 +4614,14 @@ prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1,
     loose-envify "^1.3.1"
     object-assign "^4.1.1"
 
+prop-types@^15.7.0:
+  version "15.7.1"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.1.tgz#2fa61e0a699d428b40320127733ee2931f05d9d1"
+  integrity sha512-f8Lku2z9kERjOCcnDOPm68EBJAO2K00Q5mSgPAUE/gJuBgsYLbVy6owSrtcHj90zt8PvW+z0qaIIgsIhHOa1Qw==
+  dependencies:
+    object-assign "^4.1.1"
+    react-is "^16.8.1"
+
 pseudomap@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/pseudomap/-/pseudomap-1.0.2.tgz#f052a28da70e618917ef0a8ac34c1ae5a68286b3"
@@ -4670,6 +4678,11 @@ react-devtools-core@3.3.4:
   dependencies:
     shell-quote "^1.6.1"
     ws "^3.3.1"
+
+react-is@^16.8.1:
+  version "16.8.1"
+  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.1.tgz#a80141e246eb894824fb4f2901c0c50ef31d4cdb"
+  integrity sha512-ioMCzVDWvCvKD8eeT+iukyWrBGrA3DiFYkXfBsVYIRdaREZuBjENG+KjrikavCLasozqRWTwFUagU/O4vPpRMA==
 
 react-native-branch@2.2.5:
   version "2.2.5"

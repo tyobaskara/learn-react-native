@@ -433,7 +433,7 @@ JenChart.defaultProps = {
   marginVertical: 0,
   onPress: () => {},
   svgStyles: {}
-};
+}
 
 JenChart.propTypes = {
   activeColor: PropTypes.string,
@@ -450,4 +450,4 @@ JenChart.propTypes = {
   onPress: PropTypes.func,
   platform: PropTypes.string.isRequired,
   svgStyles: PropTypes.object
-};
+}

@@ -8,11 +8,10 @@ import {
   AxisGeneration,
   BarGeneration,
   BarLine,
-  BarChart,
-  JenChart
+  BarChart
 } from '../../components/BarChart';
 
-// import { JenChart } from 'jenchart';
+import JenChart from 'jenchart';
 
 import styles from './styles';
 
@@ -39,7 +38,7 @@ export default class Chart extends PureComponent {
           />
         </View>
 
-        <View style={styles.section}>
+        {/* <View style={styles.section}>
           <Text style={styles.title}>JenChart With Props</Text>
           <JenChart
             activeColor='green'
@@ -75,7 +74,7 @@ export default class Chart extends PureComponent {
               height: 400
             }}
           />
-        </View>
+        </View> */}
 
         <View style={styles.section}>
           <Text style={styles.title}>BarChart</Text>

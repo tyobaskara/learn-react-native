@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "d3": "^5.8.2",
+    "jenchart": "^1.0.8",
     "react": "16.6.3",
     "react-native": "0.58.3",
     "react-native-extended-stylesheet": "^0.11.1",

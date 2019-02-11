@@ -8,9 +8,10 @@ import {
   AxisGeneration,
   BarGeneration,
   BarLine,
-  BarChart,
-  JenChart
+  BarChart
 } from '../../components/BarChart';
+
+import JenChart from 'jenchart';
 
 import styles from './styles';
 
