@@ -2070,6 +2070,43 @@ d3@^5.8.0:
     d3-voronoi "1"
     d3-zoom "1"
 
+d3@^5.8.2:
+  version "5.9.1"
+  resolved "https://registry.yarnpkg.com/d3/-/d3-5.9.1.tgz#fde73fa9af7281d2ff0d2a32aa8f306e93a6d1cd"
+  integrity sha512-JceuBn5VVWySPQc9EA0gfq0xQVgEQXGokHhe+359bmgGeUITLK2r2b9idMzquQne9DKxb7JDCE1gDRXe9OIF2Q==
+  dependencies:
+    d3-array "1"
+    d3-axis "1"
+    d3-brush "1"
+    d3-chord "1"
+    d3-collection "1"
+    d3-color "1"
+    d3-contour "1"
+    d3-dispatch "1"
+    d3-drag "1"
+    d3-dsv "1"
+    d3-ease "1"
+    d3-fetch "1"
+    d3-force "1"
+    d3-format "1"
+    d3-geo "1"
+    d3-hierarchy "1"
+    d3-interpolate "1"
+    d3-path "1"
+    d3-polygon "1"
+    d3-quadtree "1"
+    d3-random "1"
+    d3-scale "2"
+    d3-scale-chromatic "1"
+    d3-selection "1"
+    d3-shape "1"
+    d3-time "1"
+    d3-time-format "2"
+    d3-timer "1"
+    d3-transition "1"
+    d3-voronoi "1"
+    d3-zoom "1"
+
 debug@2.6.9, debug@^2.1.2, debug@^2.2.0, debug@^2.3.3, debug@^2.6.8, debug@^2.6.9:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
@@ -2592,10 +2629,10 @@ expo-task-manager@~1.0.0:
     expo-errors "~1.0.0"
     expo-task-manager-interface "~1.0.0"
 
-expo@^32.0.0:
-  version "32.0.4"
-  resolved "https://registry.yarnpkg.com/expo/-/expo-32.0.4.tgz#f794bbd261907c0cd066cf67be20742adee4092a"
-  integrity sha512-KWTm5yQcrh5Z7oXbf8oLPKdgRL34Mm0spcN1yNQzyODQ/RlYuMLYeQcsEWhcuqIKygT94Fi0Td+d5hrOyQ8dMQ==
+expo@^32.0.5:
+  version "32.0.5"
+  resolved "https://registry.yarnpkg.com/expo/-/expo-32.0.5.tgz#ebfa6a12d6f11938264392ec7300ccc4368678fd"
+  integrity sha512-xo8wZ9/4F3P1xN9nKFSJM3Gb2m0p05aRncjgFF+jxM5XfvKkUrzW0a6FYOY/h/r2r1wyQI7OTBPTiTH/GxuwgA==
   dependencies:
     "@babel/runtime" "^7.1.2"
     "@expo/vector-icons" "github:expo/vector-icons#expo-font-fix"
@@ -2659,7 +2696,7 @@ expo@^32.0.0:
     prop-types "^15.6.0"
     qs "^6.5.0"
     react-native-branch "2.2.5"
-    react-native-gesture-handler "1.0.14"
+    react-native-gesture-handler "~1.0.14"
     react-native-maps expo/react-native-maps#v0.22.1-exp.0
     react-native-reanimated "1.0.0-alpha.11"
     react-native-screens "1.0.0-alpha.22"
@@ -3377,10 +3414,13 @@ isomorphic-fetch@^2.1.1:
     node-fetch "^1.0.1"
     whatwg-fetch ">=0.10.0"
 
-jenchart@^1.0.15:
-  version "1.0.15"
-  resolved "https://registry.yarnpkg.com/jenchart/-/jenchart-1.0.15.tgz#94716a2a4b39b8c09ead2401c55a999885a02645"
-  integrity sha512-yIQ5pkbRPH65L8k5XtQ3AICbFqjNu/zPckL1DGzLgFri0jG9W4+PWQhM+LFcnEB36YuKXPTb6oOboAajjffhNQ==
+jenchart@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/jenchart/-/jenchart-1.1.0.tgz#a2ddd79f794905c98cd685223fcc3fbff0a4bba2"
+  integrity sha512-4mjQj+LiDwOfl7EPDmAZ83Uu75s0UUcNKx+IIyFdETpEGzUXnU8HNZkjEZAJdZ1zVc36emssennmIb40SytvkQ==
+  dependencies:
+    d3 "^5.8.2"
+    svgs "^4.0.0"
 
 jest-docblock@23.2.0, jest-docblock@^23.2.0:
   version "23.2.0"
@@ -4697,16 +4737,16 @@ react-native-extended-stylesheet@^0.11.1:
     css-mediaquery "^0.1.2"
     object-resolve-path "^1.1.0"
 
-react-native-gesture-handler@1.0.14:
-  version "1.0.14"
-  resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.0.14.tgz#0e79fcc7175c9bb2e550917a35488100eec8738b"
-  integrity sha512-mp+VD7ukS/gI6HhIJMp9GTIUzbNB+1MS9CvvtWEYoVp0eWFHuDA4W+t1cFNZv08kgDI9mBNbV9jj05hlzefSTw==
+react-native-gesture-handler@~1.0.14:
+  version "1.0.15"
+  resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.0.15.tgz#7e0d0a457820a3c9325a3d492daaed14400508a6"
+  integrity sha512-BePn+YOKcspHb1xPkUdJs+H6jiaECrT2c98txADBYWHwuUeundE+uUJG0r3FQLFvM2MoGeiJeD96sePzk+WSvQ==
   dependencies:
     hoist-non-react-statics "^2.3.1"
     invariant "^2.2.2"
     prop-types "^15.5.10"
 
-react-native-maps@expo/react-native-maps#v0.22.1-exp.0:
+"react-native-maps@github:expo/react-native-maps#v0.22.1-exp.0":
   version "0.22.1"
   resolved "https://codeload.github.com/expo/react-native-maps/tar.gz/e6f98ff7272e5d0a7fe974a41f28593af2d77bb2"
 
