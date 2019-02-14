@@ -24,6 +24,8 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": "jenchart react js react-native react-native-svg svgs d3",
+    "githubUrl": "https://github.com/tyobaskara/JenChart"
   }
 }

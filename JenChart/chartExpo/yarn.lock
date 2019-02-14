@@ -3414,10 +3414,10 @@ isomorphic-fetch@^2.1.1:
     node-fetch "^1.0.1"
     whatwg-fetch ">=0.10.0"
 
-jenchart@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/jenchart/-/jenchart-1.1.0.tgz#a2ddd79f794905c98cd685223fcc3fbff0a4bba2"
-  integrity sha512-4mjQj+LiDwOfl7EPDmAZ83Uu75s0UUcNKx+IIyFdETpEGzUXnU8HNZkjEZAJdZ1zVc36emssennmIb40SytvkQ==
+jenchart@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/jenchart/-/jenchart-1.1.1.tgz#f3e097fa36214abbfeab3458d090151a92523ec4"
+  integrity sha512-DyNjLhTbhs+JRGuexPJo1Mc3wkquj7JhAxnFBTgi3cql6nn83cnFMIGtRQxIuGEOP0rULHv4Fr3ybIEgdHjGMQ==
   dependencies:
     d3 "^5.8.2"
     svgs "^4.0.0"
