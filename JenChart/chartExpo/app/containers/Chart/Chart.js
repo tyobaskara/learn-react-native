@@ -12,6 +12,7 @@ import {
 } from '../../components/BarChart';
 
 import JenChart from 'jenchart';
+import triangle from '../../../assets/triangle.png';
 
 import styles from './styles';
 
@@ -26,15 +27,27 @@ export default class Chart extends PureComponent {
         <View style={styles.section}>
           <Text style={styles.title}>JenChart Default</Text>
           <JenChart
+            activeIndex='3'
+            axisCustom={{
+              strokeDasharray: [0, 0],
+              strokeWidth: 2
+            }}
+            borderBottom
+            borderBottomProp={{
+              stroke: '#dfdfdf',
+              strokeWidth: 2
+            }}
             data={data.slice(0, 6)}
             onPress={(index, item) => this._onPress(index, item)}
-            activeIndex='3'
-            platform={Platform.OS}
+            platform='mobile'
             svgStyles={{
               backgroundColor: '#fff',
-              width: width,
+              width,
               height: 250
             }}
+            trianglePosition={6}
+            triangleSrc={triangle}
+            triangleScale={15}
           />
         </View>
 
@@ -55,6 +68,11 @@ export default class Chart extends PureComponent {
               r: '5',
               fill: 'red'
             }}
+            borderBottom
+            borderBottomProp={{
+              stroke: '#dfdfdf',
+              strokeWidth: 2
+            }}
             data={data}
             labelTopStyle={{
               fill: 'red',
@@ -71,14 +89,17 @@ export default class Chart extends PureComponent {
               stroke: 'magenta',
               strokeWidth: 3
             }}
-            marginVertical={50}
+            graphMarginVertical={50}
             onPress={(index, item) => this._onPress(index, item)}
-            platform={Platform.OS}
+            platform='mobile'
             svgStyles={{
               backgroundColor: '#fff',
               width: 700,
               height: 400
             }}
+            trianglePosition={6}
+            triangleSrc={triangle}
+            triangleScale={15}
           />
         </ScrollView>
 
